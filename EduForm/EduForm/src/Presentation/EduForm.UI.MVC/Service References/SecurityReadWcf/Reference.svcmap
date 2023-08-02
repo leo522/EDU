@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a9f4d387-10af-4029-99d0-82dd80c8f154" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SecurityReadWCFService.xsd" MetadataType="Schema" ID="ff57f24a-6f14-472c-9880-4cddc8d0d78b" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SecurityReadWCFService1.xsd" MetadataType="Schema" ID="4de93852-a568-480b-b1a0-c6dfb7aea034" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SecurityReadWCFService.disco" MetadataType="Disco" ID="5d5eb4ae-6a7b-434d-979e-eada85aee1e1" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc?disco" />
+    <MetadataFile FileName="SecurityReadWCFService2.xsd" MetadataType="Schema" ID="d44223b5-e87e-4371-a8de-b78f0d72458a" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SecurityReadWCFService3.xsd" MetadataType="Schema" ID="4ab98c02-aeb9-48b2-9415-1d2ea675c7e1" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SecurityReadWCFService4.xsd" MetadataType="Schema" ID="dca8c0fe-1249-4f8f-bf33-2687834b642d" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc?xsd=xsd4" />
+    <MetadataFile FileName="SecurityReadWCFService5.xsd" MetadataType="Schema" ID="56cf9e47-86a6-48c3-9d80-23ac8a4d18d6" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc?xsd=xsd5" />
+    <MetadataFile FileName="SecurityReadWCFService.wsdl" MetadataType="Wsdl" ID="356998d5-c5af-4d98-bd54-d3b87a3b7f23" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

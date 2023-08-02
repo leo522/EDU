@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using KMUH.EduForm.ApplicationLayer.DTO;
+using KMUH.EduForm.ApplicationLayer.Services;
+
+
+namespace KMUH.EduForm.Services
+{
+	
+	public partial class EduFormAppServiceController : ApiController
+	{
+		private IEduFormAppService service = new EduFormAppService();
+
+		public string Ping()
+		{
+			return service.Ping();
+		}
+
+	}
+}
+
+

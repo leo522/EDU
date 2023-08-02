@@ -1,0 +1,53 @@
+﻿.listItemSpacing label {
+        margin-left: 10px;   /* 設置左邊間距 */
+        margin-right: 10px;  /* 設置右邊間距 */
+    }
+
+    .form-Eventrow label {
+        display: inline-block;
+        width: 100px;
+        vertical-align: top;
+    }
+
+    .form-Eventrow input {
+        display: inline-block;
+    }
+
+    .form-Organrow label {
+        display: inline-block;
+        width: 100px;
+        vertical-align: top;
+    }
+
+    .form-Organrow input {
+        display: inline-block;
+    }
+
+    .form-Daterow label {
+        display: inline-block;
+        width: 100px;
+        vertical-align: top;
+    }
+
+    .form-Daterow input {
+        display: inline-block;
+    }
+
+    .form-Supportingrow label {
+        display: inline-block;
+        width: 100px;
+        vertical-align: top;
+    }
+
+    .form-Supportingrow input {
+        display: inline-block;
+    }
+
+    .blueText {
+        color: blue;
+    }
+
+    .SerachReviewButton {
+        background-color: #02F78E; /*查詢審查結果按鈕背景顏色 */
+        color: #000000; /*按鈕文字顏色*/
+    }

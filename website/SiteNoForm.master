@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SiteNoForm.master.cs" Inherits="SiteNoForm" %>
+
+<%@ Register assembly="Telerik.Web.UI" namespace="Telerik.Web.UI" tagprefix="telerik" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .RadMenu_MySkin
+        {
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <telerik:RadScriptManager ID="RadScriptManager1" Runat="server"></telerik:RadScriptManager>
+
+    <div class="page" style="width:1000px;">
+    
+    <div style="width:1000px; height:65px">
+        <asp:ImageMap ID="ImageMap1" runat="server" BorderStyle="None" 
+            ImageUrl="~/Images/banner.jpg" Width="1000px">
+            <asp:RectangleHotSpot Bottom="65" NavigateUrl="~/Default.aspx" Right="350" />
+        </asp:ImageMap>
+    </div>
+        <div class="header" style="z-index:3000;">
+            <div class="clear hideSkiplink">
+                <div class="title">
+                    <asp:Menu SkipLinkText="" ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" Font-Size="X-Small">
+                    </asp:Menu>
+                </div>
+                <div class="loginDisplay">
+                    <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                        <AnonymousTemplate>
+                            [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">登入</a> ]
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                        <a href="AvatarEdit.aspx" border="0" style="border:0;" target="_blank">
+                            <asp:Image BorderStyle="None" ID="AvatarSmall" runat="server" Height="35px" Width="35px"/>
+                            </a>
+                            歡迎 <span class="bold"><asp:Label ID="HeadLoginName" runat="server"></asp:Label></span>!
+                            [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" 
+                                LogoutText="登出" LogoutPageUrl="~/" onloggedout="HeadLoginStatus_LoggedOut"/> ]
+                            
+                        </LoggedInTemplate>
+                </asp:LoginView>
+
+                    
+
+                </div>           
+            </div>
+        </div>
+        <table width="100%">
+        <tr>
+        <td valign="top">
+        <br />
+            <asp:Menu ID="Menu1" runat="server" BackColor="#F7F6F3" 
+                DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Small" 
+                ForeColor="#7C6F57" StaticSubMenuIndent="10px">
+                <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                <DynamicMenuStyle BackColor="#F7F6F3" />
+                <DynamicSelectedStyle BackColor="#5D7B9D" />
+                <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                <StaticSelectedStyle BackColor="#5D7B9D" />
+            </asp:Menu>
+            </td>
+        <td>
+        <div class="main">
+
+        <div style="text-align:right">
+            <asp:Label runat="server" ID="lbErrMsg" Text="" ForeColor="Red"></asp:Label>
+            </div>
+
+
+
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+            </asp:ContentPlaceHolder>
+
+
+        </div>
+        </td>
+        </tr>
+        </table>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+            
+    </form>
+</body>
+</html>

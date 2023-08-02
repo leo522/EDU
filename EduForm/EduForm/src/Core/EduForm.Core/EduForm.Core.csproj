@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5376A33F-5CA0-40BB-A077-42845D3B422B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KMUH.EduForm</RootNamespace>
+    <AssemblyName>EduForm.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.XML" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="AppFramework">
+      <HintPath>C:\KMUH_HIS\Common\AppFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="AppFramework.Infrastructure">
+      <HintPath>C:\KMUH_HIS\Common\AppFramework.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="FunctionLibrary.Core">
+      <HintPath>C:\KMUH_HIS\Common\FunctionLibrary.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess, Version=2011.3.1129.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2011.3.1129.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess.RunTime, Version=2011.3.1129.2, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="ApplicationLayer\Assemblers\Assemblers.ext.cs" />
+    <Compile Include="ApplicationLayer\DTO\Transports.ext.cs" />
+    <Compile Include="ApplicationLayer\Services\CodeRefAppService.cs" />
+    <Compile Include="ApplicationLayer\Services\EduFormAppService.cs" />
+    <Compile Include="ApplicationLayer\Services\_generated\EduFormNormalAppService.generated.cs" />
+    <Compile Include="ApplicationLayer\Services\_generated\IEduFormAppService.generated.cs" />
+    <Compile Include="DomainModel\Entities\FORM_INSTANCE.generated.cs">
+      <DependentUpon>EduFormDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\_generated\CodeRefOperationService.generated.cs" />
+    <Compile Include="DomainModel\Entities\_generated\EduFormAssemblers.generated.cs" />
+    <Compile Include="DomainModel\Entities\_generated\EduFormDiagrams.generated.cs" />
+    <Compile Include="DomainModel\Entities\_generated\EduFormEntityServices.generated.cs" />
+    <Compile Include="DomainModel\Entities\_generated\EduFormOperationService.generated.cs" />
+    <Compile Include="DomainModel\Entities\_generated\EduFormTransports.generated.cs" />
+    <Compile Include="DomainModel\Entities\_generated\IEduFormOperationService.generated.cs" />
+    <Compile Include="Infrastructure\Data\Repositories\EduFormRepositories.generated.cs" />
+    <Compile Include="Infrastructure\Data\Repositories\RepositoryExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DomainModel\Entities\EduFormDiagrams.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EduFormDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduFormDiagrams.ext.cs">
+      <DependentUpon>EduFormDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\Entities.ext.cs" />
+    <Compile Include="DomainModel\Factories\EntityFactories.cs" />
+    <Compile Include="DomainModel\Specifications\Specifications.cs" />
+    <Compile Include="Resources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <OpenAccessDeploy Include="DomainModel\Entities\EduFormDiagrams.rlinq">
+      <Generator>MetaModelCodeGenerator</Generator>
+      <LastGenOutput>EduFormDiagrams.cs</LastGenOutput>
+    </OpenAccessDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ApplicationLayer\Services\EduFormAppService.log">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EduFormAppService.tt</DependentUpon>
+    </None>
+    <None Include="ApplicationLayer\Services\EduFormAppService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EduFormAppService.log</LastGenOutput>
+      <LastOutputs>
+..\..\..\..\Services\EduForm.Services\CodeRefWCFService.svc
+..\..\..\..\Services\EduForm.Services\CodeRefWCFService.svc.cs
+..\..\..\..\Services\EduForm.Services\EduFormWCFService.svc
+..\..\..\..\Services\EduForm.Services\EduFormWCFService.svc.cs
+..\..\..\..\Services\EduForm.Services\ICodeRefWCFService.generated.cs
+..\..\..\..\Services\EduForm.Services\IEduFormWCFService.generated.cs
+..\..\..\..\Tests\EduForm.UnitTests\AppServiceUnitTest.txt
+.\_generated\EduFormAppServiceController.generated.txt
+.\_generated\EduFormNormalAppService.generated.cs
+.\_generated\IEduFormAppService.generated.cs
+.\EduFormAppService.log
+</LastOutputs>
+    </None>
+    <None Include="DomainModel\Entities\EduFormDiagrams.log">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EduFormDiagrams.tt</DependentUpon>
+    </None>
+    <None Include="DomainModel\Entities\EduFormDiagrams.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EduFormDiagrams.log</LastGenOutput>
+      <LastOutputs>
+..\..\Infrastructure\Data\Repositories\EduFormRepositories.generated.cs
+.\_generated\CodeRefOperationService.generated.cs
+.\_generated\EduFormAssemblers.ext.generated.txt
+.\_generated\EduFormAssemblers.generated.cs
+.\_generated\EduFormDiagrams.generated.cs
+.\_generated\EduFormEntities.ext.generated.txt
+.\_generated\EduFormEntityServices.generated.cs
+.\_generated\EduFormOperationService.generated.cs
+.\_generated\EduFormTransports.ext.generated.txt
+.\_generated\EduFormTransports.generated.cs
+.\_generated\EntityFactories.generated.txt
+.\_generated\IEduFormOperationService.generated.cs
+.\_generated\Specifications.generated.txt
+.\EduFormDiagrams.log
+</LastOutputs>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationLayer\Services\_generated\EduFormAppServiceController.generated.txt" />
+    <Content Include="DomainModel\Entities\_generated\EduFormAssemblers.ext.generated.txt" />
+    <Content Include="DomainModel\Entities\_generated\EduFormEntities.ext.generated.txt" />
+    <Content Include="DomainModel\Entities\_generated\EduFormTransports.ext.generated.txt" />
+    <Content Include="DomainModel\Entities\_generated\EntityFactories.generated.txt" />
+    <Content Include="DomainModel\Entities\_generated\Specifications.generated.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+  <Import Condition="Exists('$(MSBuildExtensionsPath)\OpenAccess.targets')" Project="$(MSBuildExtensionsPath)\OpenAccess.targets" />
+</Project>

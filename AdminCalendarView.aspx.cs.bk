@@ -1,0 +1,470 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data;
+using System.Drawing;
+
+public partial class AdminCalendarView : ProtalBase
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack && Request.Form["empcode"] != null)
+        {
+            User user = new global::User();
+            user.UserID = Request.Form["empcode"];
+            user.UserName = Request.Form["psnName"];
+            this.UserInfo = user;
+            Session["emp_code"] = user.UserID;
+        }
+        string url = "AdminCalendarView.aspx";
+        Menu1.Items[1].NavigateUrl = url;
+
+        url = "AppointmentManagerView.aspx";
+        Menu1.Items[0].NavigateUrl = url;
+    }
+
+    protected void QueryButton_Click(object sender, EventArgs e)
+    {
+        string SeminarTimeTo = "";
+        string SeminarTimeFrom = "";
+        if (!SeminarDateTo.IsEmpty) SeminarTimeTo = ((System.DateTime)SeminarDateTo.SelectedDate).Date.ToString("d");
+        if (!SeminarDateFrom.IsEmpty) SeminarTimeFrom = ((System.DateTime)SeminarDateFrom.SelectedDate).Date.ToString("d");
+        System.Data.DataTable data = new System.Data.DataTable();
+
+        System.Data.SqlClient.SqlConnection sqlConnection = new System.Data.SqlClient.SqlConnection();
+        System.Data.SqlClient.SqlCommand sqlCommand = new System.Data.SqlClient.SqlCommand();
+        sqlConnection.ConnectionString = getConnectionString();
+        sqlCommand.Connection = sqlConnection;
+        string commandText = "SELECT SeminarID, ThemeDes, emp_code, SeminarWhere, SeminarTimeFrom, SeminarTimeTo, RegisterTimeFrom, RegisterTimeTo, SeminarCharge, LearnerTypeDes FROM Seminar WHERE ";
+        commandText += "emp_code = @emp_code or @emp_code = '1020640' ";
+        sqlCommand.Parameters.AddWithValue("@emp_code", this.UserInfo.UserID);
+        if (SeminarDateTo.SelectedDate!=null)
+        {
+            commandText += "AND ";
+            commandText += "SeminarTimeTo <= @SeminarTimeTo ";
+            sqlCommand.Parameters.AddWithValue("@SeminarTimeTo", SeminarDateTo.SelectedDate.Value);
+        }
+        if (SeminarDateFrom.SelectedDate!=null)
+        {
+            if (!SeminarDateTo.IsEmpty) commandText += "AND ";
+            commandText += "SeminarTimeFrom >= @SeminarTimeFrom ";
+            sqlCommand.Parameters.AddWithValue("@SeminarTimeFrom", SeminarDateFrom.SelectedDate.Value);
+        }
+        if (ThemeKeywordText.Text != "")
+        {
+            if (!SeminarDateTo.IsEmpty || !SeminarDateFrom.IsEmpty) commandText += "AND ";
+            commandText += "ThemeDes LIKE '%' + @ThemeDes + '%' ";
+            sqlCommand.Parameters.AddWithValue("@ThemeDes", ThemeKeywordText.Text);
+        }
+        if (ThemeKeywordText.Text == "" && SeminarDateFrom.IsEmpty && SeminarDateTo.IsEmpty)
+        {
+            commandText += "AND ";
+            commandText += "SeminarTimeFrom >= @SeminarTimeFrom ";            
+            commandText += "AND ";
+            commandText += "SeminarTimeTo <= @SeminarTimeTo ";
+            sqlCommand.Parameters.AddWithValue("@SeminarTimeFrom", SeminarDateFrom.SelectedDate == null ? SeminarDateFrom.MinDate : SeminarDateFrom.SelectedDate.Value);
+            sqlCommand.Parameters.AddWithValue("@SeminarTimeTo", SeminarDateTo.SelectedDate == null ? SeminarDateTo.MaxDate : SeminarDateTo.SelectedDate.Value);
+        
+        }
+        commandText += "ORDER BY SeminarTimeFrom DESC";
+        sqlCommand.CommandText = commandText;
+        sqlConnection.Open();
+        System.Data.SqlClient.SqlDataReader sqlReader = sqlCommand.ExecuteReader();
+        data.Load(sqlReader);
+        sqlConnection.Close();
+
+        GridView1.DataSource = data;
+        GridView1.DataBind();
+        if (data.Rows.Count==0)
+        {
+            Labelsearchfile.ForeColor = Color.Red;
+            Labelsearchfile.Text = "抱歉查無任何資料";
+        }
+    }
+
+    private string getConnectionString()
+    {
+        string returnVal = null;
+        ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["www_SeminarConnectionString"];
+        if (settings != null)
+            returnVal = settings.ConnectionString;
+        return returnVal;
+    }
+
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        e.Row.Cells[0].Visible = false;
+        for (int i = 0; i < GridView1.Rows.Count; i++)
+        {
+            string id = 
+            //Session["ID"] = 
+            GridView1.Rows[i].Cells[0].Text;
+
+            System.Data.DataTable Journaldata = new System.Data.DataTable();
+            System.Data.SqlClient.SqlConnection JournalsqlConnection = new System.Data.SqlClient.SqlConnection();
+            System.Data.SqlClient.SqlCommand JournalsqlCommand = new System.Data.SqlClient.SqlCommand();
+            JournalsqlConnection.ConnectionString = getConnectionString();
+            JournalsqlCommand.Connection = JournalsqlConnection;
+            string JournalcommandText = "SELECT status FROM Journal WHERE ";
+            JournalcommandText += "SeminarID = @SeminarID ";
+            JournalsqlCommand.Parameters.AddWithValue("@SeminarID", id);
+            JournalcommandText += "ORDER BY SeminarID DESC";
+            JournalsqlCommand.CommandText = JournalcommandText;
+            JournalsqlConnection.Open();
+            System.Data.SqlClient.SqlDataReader JournalsqlReader = JournalsqlCommand.ExecuteReader();
+            Journaldata.Load(JournalsqlReader);
+            JournalsqlConnection.Close();
+            GridView2.DataSource = Journaldata;
+            Session["Journaldata"] = Journaldata;
+            GridView2.DataBind();
+            if (GridView2.Rows.Count == 0)
+            {
+                (GridView1.Rows[i].Cells[8].FindControl("Buttonsubmit") as Button).Enabled = false;
+            }
+
+
+            System.Data.DataTable SeminarLearnerdata = new System.Data.DataTable();
+            System.Data.SqlClient.SqlConnection SeminarLearnersqlConnection = new System.Data.SqlClient.SqlConnection();
+            System.Data.SqlClient.SqlCommand SeminarLearnersqlCommand = new System.Data.SqlClient.SqlCommand();
+            SeminarLearnersqlConnection.ConnectionString = getConnectionString();
+            SeminarLearnersqlCommand.Connection = SeminarLearnersqlConnection;
+            string SeminarLearnercommandText = "SELECT Status FROM SeminarLearner WHERE ";
+            SeminarLearnercommandText += "SeminarID = @SeminarID ";
+            SeminarLearnersqlCommand.Parameters.AddWithValue("@SeminarID", id);
+            SeminarLearnercommandText += "ORDER BY SeminarID DESC";
+            SeminarLearnersqlCommand.CommandText = SeminarLearnercommandText;
+            SeminarLearnersqlConnection.Open();
+            System.Data.SqlClient.SqlDataReader SeminarLearnersqlReader = SeminarLearnersqlCommand.ExecuteReader();
+            SeminarLearnerdata.Load(SeminarLearnersqlReader);
+            SeminarLearnersqlConnection.Close();
+            GridView3.DataSource = SeminarLearnerdata;
+            Session["SeminarLearnerdata"] = SeminarLearnerdata;
+            GridView3.DataBind();
+            if (GridView3.Rows.Count == 0)
+            {
+                (GridView1.Rows[i].Cells[7].FindControl("Buttonregister") as Button).Enabled = false;
+            }
+
+            if (Convert.ToDateTime(GridView1.Rows[i].Cells[4].Text) < DateTime.Now)
+            {
+                (GridView1.Rows[i].Cells[10].FindControl("Buttonappl") as Button).Enabled = false;
+            }
+        }
+    }
+
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        GridViewRow row = (sender as Button).Parent.Parent as GridViewRow;
+        //Session["ID"] = row.Cells[0].Text;
+        string url = "AddEditSeminar.aspx?ID=" + row.Cells[0].Text;
+        Response.Redirect(url);
+    }
+    protected void AddSeminar_Click(object sender, EventArgs e)
+    {
+        //Session["ID"] = null;
+        string url = "AddEditSeminar.aspx";
+        Response.Redirect(url);
+    }
+    protected void Buttonregister_Click(object sender, EventArgs e)
+    {
+        GridViewRow row = (sender as Button).Parent.Parent as GridViewRow;
+        //Session["ID"] = row.Cells[0].Text;
+        string url = "ToRegister.aspx?ID=" + row.Cells[0].Text;
+        Response.Redirect(url);
+    }
+    protected void Buttonsubmit_Click(object sender, EventArgs e)
+    {
+        GridViewRow row = (sender as Button).Parent.Parent as GridViewRow;
+        //Session["ID"] = row.Cells[0].Text;
+        string url = "ToSubmit.aspx?ID=" + row.Cells[0].Text;
+        Response.Redirect(url);
+    }
+
+    protected void Buttonprint_Click(object sender, EventArgs e)
+    {
+        GridViewRow row = (sender as Button).Parent.Parent as GridViewRow;
+        string id = row.Cells[0].Text;
+        System.Data.SqlClient.SqlConnection sqlConnection = new System.Data.SqlClient.SqlConnection();
+        sqlConnection.ConnectionString = getConnectionString();
+
+
+        string sql = @"SELECT a.[Name] as 姓名, 
+a.PID as 身分證字號,
+a.eMail as [e-mail], 
+a.Phone2 as 住家電話,
+a.CellPhone as 手機號碼, 
+a.OfficePhone as 公司電話, 
+b.CityName as 縣市, 
+e.DistName as 區, 
+a.City as 住址, 
+(select max(name) from jobtype where code = a.positioncode) as 職類別,
+position as 職稱,
+case 
+when a.iskmug = 1 then a.hospital
+else a.Company
+end
+as 服務機構
+, 
+
+case 
+when c.MealBreakfast = 'N' then '不供餐'
+when c.MealBreakfast = 'Y' and a.MealBreakfast = '0' then '葷食'
+when c.MealBreakfast = 'Y' and a.MealBreakfast = '1' then '素食'
+when c.MealBreakfast = 'Y' and a.MealBreakfast = '2' then '不須用餐'
+end
+as 早餐
+,
+case 
+when c.Meal = 'N' then '不供餐'
+when c.Meal = 'Y' and a.Meal = '0' then '葷食'
+when c.Meal = 'Y' and a.Meal = '1' then '素食'
+when c.Meal = 'Y' and a.Meal = '2' then '不須用餐'
+end
+as 午餐
+, 
+case 
+when c.MealDinner = 'N' then '不供餐'
+when c.MealDinner = 'Y' and a.MealDinner = '0' then '葷食'
+when c.MealDinner = 'Y' and a.MealDinner = '1' then '素食'
+when c.MealDinner = 'Y' and a.MealDinner = '2' then '不須用餐'
+end
+as 晚餐
+,
+
+case
+when a.PayType ='1' then a.payname
+when a.PayType = '2' then a.bank_no_5
+end
+as 匯款帳號或帳號後五碼
+, a.PayDate as 繳費日期,
+PayValue as 繳費金額, 
+a.sup_name as 收據抬頭, 
+a.sup_no as 統一編號, 
+case
+when a.IsKMUG =0 then '非高醫體系'
+when a.IsKMUG =1 then hospital
+end
+as 是否高醫體系同仁, 
+a.EMP_CODe as 員工編號, 
+f.deptcode+' '+f.deptname as 員工部門,
+convert(varchar,a.RegisterDate,120) as 報名日期, 
+case
+when a.status is null then '未審核'
+when a.status = 'Y' then '審核通過'
+when a.status = 'N' then '審核未通過'
+end
+as 報名狀態
+, 
+cast(a.RegistOrder as varchar) as 報名序號
+FROM SeminarLearner a
+inner join Seminar c on c.SeminarID = a.SeminarID
+left join TWCities b on a.CityCode = b.CityCode
+left join TWDistricts e on a.DistCode = e.DistCode
+left join sys_public.dbo.V_KmuEmp f on a.emp_code = f.empcode or a.emp_code = f.empcode7
+where a.SeminarID = @SeminarID
+and a.status !='X' 
+order by a.RegisterDate, a.IsKMUG, a.RegistOrder";
+        System.Data.SqlClient.SqlDataAdapter adp = new System.Data.SqlClient.SqlDataAdapter(sql, sqlConnection);
+        adp.SelectCommand.Parameters.AddWithValue("@SeminarID", id);
+        DataTable dt = new DataTable();
+        adp.Fill(dt);
+
+
+        adp = new System.Data.SqlClient.SqlDataAdapter("select * from seminar where seminarid=@seminarid", sqlConnection);
+        adp.SelectCommand.Parameters.AddWithValue("@seminarid", id);
+        DataTable dtmain = new DataTable();
+        adp.Fill(dtmain);
+        int limit = Convert.ToInt32(dtmain.Rows[0]["limit"]);
+        int extralimit = Convert.ToInt32(dtmain.Rows[0]["extralimit"]);
+        int limitemp = Convert.ToInt32(dtmain.Rows[0]["limitemp"]);
+        int extralimitemp = Convert.ToInt32(dtmain.Rows[0]["extralimitemp"]);
+
+        bool isemplimit = Convert.ToBoolean(dtmain.Rows[0]["IsEmpLimit"]);
+
+
+        int count = 0;
+        int countemp = 0;
+        foreach (DataRow dr in dt.Rows)
+        {
+            if (dr["職類別"].ToString() == "義工")
+            {
+                dr["報名序號"] = "";
+            }
+            else
+            {
+
+                if (isemplimit)
+                {
+
+                    if (dr["是否高醫體系同仁"].ToString() == "非高醫體系")
+                    {
+                        count++;
+                        if (count <= limit)
+                        {
+                            dr["報名序號"] = "非體系正取：" + count.ToString();
+                        }
+                        else
+                        {
+                            if (count <= limit + extralimit)
+                            {
+                                dr["報名序號"] = "非體系備取：" + (count - limit).ToString();
+                            }
+                            else
+                            {
+                                dr["報名序號"] = "非體系備取：" + (count - limit).ToString() + "(已超出名額)";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        countemp++;
+                        if (countemp <= limitemp)
+                        {
+                            dr["報名序號"] = "體系正取：" + countemp.ToString();
+                        }
+                        else
+                        {
+                            if (countemp <= limitemp + extralimitemp)
+                            {
+                                dr["報名序號"] = "體系備取：" + (countemp - limitemp).ToString();
+                            }
+                            else
+                            {
+                                dr["報名序號"] = "體系備取：" + (countemp - limitemp).ToString() + "(已超出名額)";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    count++;
+                    if (count <= limit)
+                    {
+                        dr["報名序號"] = "正取：" + count.ToString("000");
+                    }
+                    else
+                    {
+                        if (count <= limit + extralimit)
+                        {
+                            dr["報名序號"] = "備取：" + (count - limit).ToString("000");
+                        }
+                        else
+                        {
+                            dr["報名序號"] = "備取：" + (count - limit).ToString("000") + "(已超出名額)";
+                        }
+                    }
+                }
+            }
+        }
+
+
+        ExportDataTableToExcel(dt);
+    }
+
+    protected void Buttonapply_Click(object sender, EventArgs e)
+    {
+        GridViewRow row = (sender as Button).Parent.Parent as GridViewRow;
+        string id = row.Cells[0].Text;
+        //Response.Write(dr["SeminarID"].ToString());
+        string url = "RegistSeminar.aspx?ID" + id;
+        //Session["ID"] = id;
+        //System.Diagnostics.Debug.WriteLine(Session["ID"]);
+        Response.Redirect(url);
+    }
+
+    public void ExportDataTableToExcel(DataTable s_DataTable)
+    {
+        int tRowCount = s_DataTable.Rows.Count;
+        int tColumnCount = s_DataTable.Columns.Count;
+
+        Response.Expires = 0;
+        Response.Clear();
+        Response.Buffer = true;
+        Response.Charset = "utf-8";
+        Response.ContentEncoding = System.Text.Encoding.UTF8;
+        Response.ContentType = "application/vnd.ms-excel";
+        //設定檔名可為中文_#1
+        Response.AddHeader("Content-Disposition", "attachment;filename=\"" + HttpUtility.UrlEncode("名單", System.Text.Encoding.UTF8) + ".xls\"");
+
+        //引用這三個xmlns
+        Response.Write("<html xmlns:o='urn:schemas-microsoft-com:office:office'");
+        Response.Write("xmlns:x='urn:schemas-microsoft-com:office:excel'");
+        Response.Write("xmlns='http://www.w3.org/TR/REC-html40'>");
+
+        Response.Write("<meta http-equiv=Content-Type content=text/html;charset=utf-8>");
+
+        //在head中加入xml定義
+        Response.Write("\n <head>");
+        Response.Write("\n <xml>");
+        Response.Write("\n <x:ExcelWorkbook>");
+        Response.Write("\n <x:ExcelWorksheets>");
+        Response.Write("\n <x:ExcelWorksheet>");
+        //設定此Worksheet名稱_#2
+        Response.Write("\n <x:Name>Y2J測試</x:Name>");
+
+        //以下針對此工作表進行屬性設定
+        Response.Write("\n <x:WorksheetOptions>");
+        Response.Write("\n <x:FrozenNoSplit/>");
+
+        //設定凍結行號_#3
+        //Response.Write("\n <x:SplitHorizontal>1</x:SplitHorizontal>");
+
+        //設定起始行號(TopRowBottomPane)_#4
+        Response.Write("\n <x:TopRowBottomPane>2</x:TopRowBottomPane>");
+        Response.Write("\n <x:ActivePane>2</x:ActivePane>");
+        Response.Write("\n </x:WorksheetOptions>");
+        Response.Write("\n </xml>");
+        Response.Write("\n </head>");
+
+        Response.Write("\n <body>");
+        Response.Write("<Table borderColor=black border=1>");
+        Response.Write("\n <TR>");
+
+        //塞入head
+        for (int i = 0; i < tColumnCount; i++)
+        {
+            //設定head的背景色_#5
+            Response.Write("\n <TD  bgcolor = #fff8dc>");
+            Response.Write(s_DataTable.Columns[i].ColumnName);
+            Response.Write("\n </TD>");
+        }
+
+        Response.Write("\n </TR>");
+
+        //塞入每一筆資料
+        for (int j = 0; j < tRowCount; j++)
+        {
+            Response.Write("\n <TR>");
+            for (int k = 0; k < tColumnCount; k++)
+            {
+                Response.Write("\n <TD style='mso-number-format:" + @"\@" + ";vnd.ms-excel.numberformat:@;'>");
+                Response.Write(s_DataTable.Rows[j][k].ToString());
+                Response.Write("\n </TD>");
+
+                //if (j % 2 == 0)
+                //{
+                //    //設定單號資料靠左且背景為綠色_#6
+                //    Response.Write("\n <TD>");// align=\"left\" x:num bgcolor = ADFF2F
+                //    Response.Write(s_DataTable.Rows[j][k].ToString());
+                //    Response.Write("\n </TD>");
+                //}
+                //else
+                //{
+                //    //設定雙號資料靠右_#7
+                //    Response.Write("\n <TD>");// align=\"right\" x:num
+                //    Response.Write(s_DataTable.Rows[j][k].ToString());
+                //    Response.Write("\n </TD>");
+                //}
+            }
+            Response.Write("\n </TR>");
+        }
+
+        Response.Write("</Table>");
+        Response.Write("</body>");
+        Response.Write("</html>");
+        Response.End();
+    }
+}

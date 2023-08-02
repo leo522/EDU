@@ -1,0 +1,1359 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using KMU.EduActivity.ApplicationLayer.DTO;
+using Telerik.Web.UI;
+using System.Globalization;
+using System.Text;
+using System.Drawing;
+using System.IO;
+
+public partial class EduStopActSchedule : AuthPage
+{
+    protected override void AddParsedSubObject(object obj)
+    {
+        //if (Request.QueryString["EduTermID"] != null)
+        //{
+        //    ScriptManager man = new ScriptManager();
+
+        //    (this.Master.FindControl("MainContent") as ContentPlaceHolder).Controls.Add(man);
+        //}
+        //base.AddParsedSubObject(obj);
+    }
+
+
+
+    private List<EduActTargetDto> CurrentTargetList
+    {
+        get
+        {
+            return Session["EduActTargetList"] as List<EduActTargetDto>;
+        }
+        set
+        {
+            Session["EduActTargetList"] = value;
+        }
+    }
+
+
+    protected override void OnPreInit(EventArgs e)
+    {
+        //if (Request.QueryString["EduTermID"] != null)
+        //{
+        //    base.MasterPageFile = "Empty.master";
+
+        //}
+        //else
+        //{
+        //    base.MasterPageFile = "Site.master";
+
+
+        //}
+
+        base.OnPreInit(e);
+    }
+
+    private EduTermDto CurrentData
+    {
+        get
+        {
+
+            return Session["CurrentActivityEduTerm"] as EduTermDto;
+        }
+        set
+        {
+            Session["CurrentActivityEduTerm"] = value;
+        }
+    }
+
+    private List<EduStopActScheduleDto> CurrentActList
+    {
+        get
+        {
+            if (Session["CurrentActivityList"] == null)
+            {
+                ReadScheduler(rsList.SelectedDate);
+            }
+            return Session["CurrentActivityList"] as List<EduStopActScheduleDto>;
+        }
+        set
+        {
+            Session["CurrentActivityList"] = value;
+        }
+    }
+
+    private List<SelectActTypeDto> CurrentActTypeList
+    {
+        get
+        {
+            if (Session["CurrentActTypeList"] == null)
+            {
+                BindActType();
+            }
+            return Session["CurrentActTypeList"] as List<SelectActTypeDto>;
+        }
+        set
+        {
+            Session["CurrentActTypeList"] = value;
+        }
+    }
+    private List<EduActTopicDto> CurrentTopicList
+    {
+        get
+        {
+            if (Session["CurrentEduActTopicList"] == null)
+            {
+                BindActType();
+            }
+            return Session["CurrentEduActTopicList"] as List<EduActTopicDto>;
+        }
+        set
+        {
+            Session["CurrentEduActTopicList"] = value;
+        }
+    }
+
+    private List<Color> ColorList;
+
+    private int? ColorCount = null;
+
+    private List<string> EduTermColl = null;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //if (base.MasterPageFile == "Site.master")
+        //{
+            //PostBackTrigger trigger = new PostBackTrigger();
+            //trigger.ControlID = rsList.UniqueID;
+        AddPostbackControl(rsList);
+        AddPostbackControl(ddlUnit);
+        //}
+        
+
+        ColorList = new List<Color>();
+        ColorList.Add(Color.AliceBlue);
+        ColorList.Add(Color.AntiqueWhite);
+        ColorList.Add(Color.Aqua);
+        ColorList.Add(Color.BurlyWood);
+        ColorList.Add(Color.Chartreuse);
+        ColorList.Add(Color.Coral);
+        ColorList.Add(Color.Cyan);
+        ColorList.Add(Color.DarkGray);
+        ColorList.Add(Color.DarkSeaGreen);
+        ColorList.Add(Color.Fuchsia);
+        ColorList.Add(Color.GreenYellow);
+        ColorList.Add(Color.Khaki);
+        ColorList.Add(Color.PaleGreen);
+        ColorList.Add(Color.Violet);
+        ColorList.Add(Color.WhiteSmoke);
+
+        BulletedList1.Items.Clear();
+
+        //if (Request.QueryString["EduTermID"] != null)
+        //{
+        //    RadDock1.Style["z-index"] = "1000";
+        //    //RadDock1.Style.Remove("z-index");
+        //}
+
+        if (!IsPostBack)
+        {
+            
+            rsList.DataStartField = "TimeFrom";
+            rsList.DataEndField = "TimeTo";
+            rsList.DataKeyField = "EduStopActScheduleID";
+            rsList.DataDescriptionField = "Des";
+            rsList.DataSubjectField = "EduActTopicName";
+
+            rsList.SelectedDate = DateTime.Now;
+            CurrentData = null;
+            if (Request.QueryString["EduTermID"] != null)
+            {
+                LoadEduTerm(Request.QueryString["EduTermID"].ToString());
+
+                rsList.SelectedDate = CurrentData.DateFrom;
+
+            }
+            else
+            {
+                CurrentData = new EduTermDto();
+                CurrentData.EduTermID = "";
+
+                CoursePanel.Visible = false;
+                //rsList.AllowInsert = false;
+                //rsList.AllowDelete = false;
+                //RadPageView1.Enabled = false;
+                //RadPageView2.Enabled = false;
+                //panControl.Enabled = false;
+
+                //RadDock1.Enabled = false;
+                //rsList.ReadOnly = true;
+                //ShowMessage("參數錯誤");
+                //CloseWindow(false);
+            }
+            BindTopics();
+            BindActType();
+            BindJobs();
+            BindDeptment();
+            
+            ReadScheduler(rsList.SelectedDate);
+        }
+    }
+
+
+    private void BindDeptment()
+    {
+        List<SelectGroupTypeDto> list = service.GetTermUnit("EduAct_Dept");
+        ddlDepartment.DataValueField = "code";
+        ddlDepartment.DataTextField = "Name";
+        ddlDepartment.DataSource = list;
+        ddlDepartment.DataBind();
+
+        ddlUnit.DataValueField = "code";
+        ddlUnit.DataTextField = "Name";
+        ddlUnit.DataSource = list;
+        ddlUnit.DataBind();
+
+        if (list.Count(c => c.code == this.DeptCode) > 0)
+        {
+            ddlUnit.SelectedValue = this.DeptCode;
+        }
+
+    }
+
+    private void BindTopics()
+    {
+        List<EduActTopicDto> list = service.GetEduActTopic();
+        ddlTopic.DataValueField = "EduActTopicID";
+        ddlTopic.DataTextField = "DisplayName";
+        ddlTopic.DataSource = list;
+        ddlTopic.DataBind();
+        CurrentTopicList = list;
+    }
+
+    private void BindJobs()
+    {
+        List<V_kmujobDto> list = service.GetJobs();
+        ddlJobCode.DataTextField = "DisplayName";
+        ddlJobCode.DataValueField = "JOB_CODE_X";
+        ddlJobCode.DataSource = list;
+        ddlJobCode.DataBind();
+    }
+
+    private void BindActType()
+    {
+        List<SelectActTypeDto> list = service.GetActType();
+        CurrentActTypeList = list;
+
+        ddlActivityType.DataTextField = "name";
+        ddlActivityType.DataValueField = "code";
+        ddlActivityType.DataSource = CurrentActTypeList;
+        ddlActivityType.DataBind();
+        if (CurrentActTypeList.Count > 0)
+        {
+            ddlActivityType.SelectedIndex = 0;
+        }
+
+    }
+
+    private void ReadScheduler(DateTime currentdate)
+    {
+        DateTime datebegin = new DateTime(currentdate.Year, currentdate.Month, 1).AddDays(-7);
+        DateTime dateend = new DateTime(currentdate.Year, currentdate.Month, 1).AddMonths(1).AddDays(7);
+
+        List<EduStopActScheduleDto> list = service.GetEduStopActScheduler(CurrentData, datebegin, dateend, "", ddlUnit.SelectedValue);
+        CurrentActList = list;
+
+        foreach (EduStopActScheduleDto dto in list)
+        {
+
+            //ddlTopic.SelectedValue = dto.EduActTopicID;
+            EduActTopicDto act = CurrentTopicList.Where(c => c.EduActTopicID == dto.EduActTopicID).FirstOrDefault();
+
+            if (act != null)
+            {
+                tbName.Text = act.EduActTopicName;
+                dto.EduActTopicCode = act.EduActTopicCode;
+                dto.EduActTopicName = act.EduActTopicName;
+            }
+
+            if (dto.TimeFrom > dto.TimeTo)
+            {
+                dto.TimeTo = dto.TimeFrom;
+            }
+        }
+
+
+
+
+        rsList.DataSource = CurrentActList;
+        rsList.DataBind();
+    }
+
+
+    private void LoadEduTerm(string id)
+    {
+        try
+        {
+            CurrentData = service.GetEduTermByID(id);
+            lblEduStopCode.Text = CurrentData.EduStopCode;
+            lblName.Text = CurrentData.Name;
+            lblDate.Text = CurrentData.DateFromToStr;
+            lblMemberCount.Text = CurrentData.Capacity.ToString() + "人";
+        }
+        catch (Exception ex)
+        {
+            ShowMessage("資料錯誤:" + ex.Message);
+            CloseWindow(true);
+        }
+    }
+
+
+    protected void btnSubmit_Click(object sender, EventArgs e)
+    {
+
+        bool success = true;
+
+        if (rbAddTopic.Checked && tbActivityCode.Text.Trim() == "")
+        {
+            ShowMessage("未輸入主題代碼!");
+            return;
+        }
+
+        //if (tbActName.Text.Trim() == "")
+        //{
+        //    ShowMessage("未輸入活動名稱!");
+        //    return;
+        //}
+
+        if (rbAddTopic.Checked && tbName.Text.Trim() == "")
+        {
+            ShowMessage("未輸入主旨!");
+            return;
+        }
+
+        if (rbNone.Checked && (rtpTimeEnd.SelectedDate.Value.Date != rtpTimeBegin.SelectedDate.Value.Date))
+        {
+            ShowMessage("跨日活動請於每日分別建立");
+            return;
+        }
+
+
+        if (rtpTimeBegin.SelectedTime.Value.TotalSeconds > rtpTimeEnd.SelectedTime.Value.TotalSeconds)
+        {
+            ShowMessage("結束活動時間(時間部分)應晚於開始活動時間");
+            return;
+        }
+
+        if (rbAddTopic.Checked)
+        {
+            EduActTopicDto checktopic = service.GetEduActTopicByCode(tbActivityCode.Text);
+            if (checktopic != null)
+            {
+                ShowMessage("主題代碼已存在，請重新輸入或以選取方式選擇");
+                return;
+            }
+        }
+
+
+        if (EditedAppointment == null || sender == btnSaveAs)
+        {
+            // Insert Appointment
+
+            Appointment aptToInsert = PopulateBasicAppointmentPropertiesFromForm();
+
+
+            //rsList.InsertAppointment(aptToInsert);
+            try
+            {
+                DateTime datefrom;
+                DateTime dateto;
+
+                DateTime datetoadd;
+
+                List<DateTime[]> datelist = new List<DateTime[]>();
+                if (rbNone.Checked)
+                {
+                    datelist.Add(new DateTime[] { aptToInsert.Start, aptToInsert.End });
+                }
+
+                if (rbDay.Checked)
+                {
+                    datetoadd = aptToInsert.Start.Date;
+                    while (datetoadd <= aptToInsert.End.Date)
+                    {
+                        datelist.Add(new DateTime[] { datetoadd, datetoadd });
+                        datetoadd = datetoadd.AddDays(1);
+                    }
+                }
+
+                if (rbMonth.Checked)
+                {
+                    datetoadd = new DateTime(aptToInsert.Start.Date.Year, aptToInsert.Start.Date.Month, Convert.ToInt32(rntbDay.Value.Value));
+                    while (datetoadd <= aptToInsert.End.Date)
+                    {
+                        datelist.Add(new DateTime[] { datetoadd, datetoadd });
+                        datetoadd = datetoadd.AddMonths(1);
+                    }
+                }
+
+                if (rbWeek.Checked)
+                {
+                    List<DayOfWeek> checklist = new List<DayOfWeek>();
+                    if (cb7.Checked)
+                    {
+                        checklist.Add(DayOfWeek.Sunday);
+                    }
+                    if (cb1.Checked)
+                    {
+                        checklist.Add(DayOfWeek.Monday);
+                    }
+                    if (cb2.Checked)
+                    {
+                        checklist.Add(DayOfWeek.Tuesday);
+                    }
+                    if (cb3.Checked)
+                    {
+                        checklist.Add(DayOfWeek.Wednesday);
+                    }
+                    if (cb4.Checked)
+                    {
+                        checklist.Add(DayOfWeek.Thursday);
+                    }
+                    if (cb5.Checked)
+                    {
+                        checklist.Add(DayOfWeek.Friday);
+                    }
+                    if (cb6.Checked)
+                    {
+                        checklist.Add(DayOfWeek.Saturday);
+                    }
+
+                    datetoadd = aptToInsert.Start.Date;
+                    while (datetoadd <= aptToInsert.End.Date)
+                    {
+                        if (checklist.Contains(datetoadd.DayOfWeek))
+                        {
+                            datelist.Add(new DateTime[] { datetoadd, datetoadd });
+                        }
+                        datetoadd = datetoadd.AddDays(1);
+                    }
+                }
+
+                if (rbSpecDay.Checked)
+                {
+                    DayOfWeek specweekday;
+                    switch (ddlspecweekday.SelectedValue)
+                    {
+                        case "0":
+                            specweekday = DayOfWeek.Sunday;
+                            break;
+                        case "1":
+                            specweekday = DayOfWeek.Monday;
+                            break;
+                        case "2":
+                            specweekday = DayOfWeek.Tuesday;
+                            break;
+                        case "3":
+                            specweekday = DayOfWeek.Wednesday;
+                            break;
+                        case "4":
+                            specweekday = DayOfWeek.Thursday;
+                            break;
+                        case "5":
+                            specweekday = DayOfWeek.Friday;
+                            break;
+                        case "6":
+                            specweekday = DayOfWeek.Saturday;
+                            break;
+                        default:
+                            specweekday = DayOfWeek.Sunday;
+                            break;
+                    }
+
+                    List<DateTime> specdaylist = GetTargetDate(aptToInsert.Start.Date, aptToInsert.End.Date, Convert.ToInt32(ddlweek.SelectedValue), specweekday);
+
+                    foreach (DateTime adddate in specdaylist)
+                    {
+
+                        datelist.Add(new DateTime[] { adddate.Date, adddate.Date });
+                    }
+                }
+
+
+
+                foreach (DateTime[] datearray in datelist)
+                {
+                    datefrom = datearray[0].Date.AddHours(aptToInsert.Start.Hour).AddMinutes(aptToInsert.Start.Minute).AddSeconds(aptToInsert.Start.Second);
+                    dateto = datearray[1].Date.AddHours(aptToInsert.End.Hour).AddMinutes(aptToInsert.End.Minute).AddSeconds(aptToInsert.End.Second);
+                    EduStopActScheduleDto newappointment = new EduStopActScheduleDto();
+
+                    newappointment.EduStopActScheduleID = service.GetSerialNo("EduAct_StopActScheduleID");
+                    newappointment.Des = aptToInsert.Description;
+                    newappointment.TimeTo = dateto;
+                    newappointment.TimeFrom = datefrom;
+                    newappointment.ActName = tbActName.Text;
+
+                    EduActTopicDto topic = null;
+                    if (rbSelectTopic.Checked)
+                    {
+                        newappointment.EduActTopicID = ddlTopic.SelectedValue;
+                    }
+                    else
+                    {
+
+                        topic = new EduActTopicDto();
+                        topic.EduActTopicID = service.GetSerialNo("EduAct_EduActTopicID");
+                        topic.EduActTopicCode = tbActivityCode.Text;
+                        topic.EduActTopicName = tbName.Text;
+                        newappointment.EduActTopicID = topic.EduActTopicID;
+                        newappointment.EduActTopicCode = topic.EduActTopicCode;
+                        newappointment.EduActTopicName = topic.EduActTopicName;
+                    }
+
+                    newappointment.Location = tbLocation.Text;
+
+                    newappointment.EduTermID = CurrentData.EduTermID;
+
+                    if (rbSelectType.Checked)
+                    {
+                        newappointment.ActType = ddlActivityType.SelectedValue;
+                        newappointment.ActTypeDes = null;
+                    }
+                    else
+                    {
+                        newappointment.ActType = null;
+                        newappointment.ActTypeDes = tbActType.Text;
+                    }
+                    newappointment.Creater = this.EmpCode;
+                    newappointment.LastModifier = this.EmpCode;
+
+
+                    //insert data to database
+                    service.InsertEduStopActSchedule(newappointment, CurrentTargetList, topic);
+
+                    foreach (UploadedFile file in ruploadAttachment.UploadedFiles)
+                    {
+                        byte[] bytes = new byte[file.InputStream.Length];
+                        file.InputStream.Read(bytes, 0, bytes.Length);
+                        file.InputStream.Seek(0, SeekOrigin.Begin);
+                        service.InsertActAttachment(newappointment.EduStopActScheduleID, file.FileName.Substring(file.FileName.LastIndexOf(@"\") + 1), bytes, true);
+                    }
+
+                    ruploadAttachment.UploadedFiles.Clear();
+                }
+                BindTopics();
+                ReadScheduler(rsList.SelectedDate);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("新增失敗:" + ex.Message);
+                success = false;
+            }
+
+
+        }
+        else
+        {
+            if (!rsList.EditingRecurringSeries && (EditedAppointmentParent != null || EditedAppointment.RecurrenceState == RecurrenceState.Master))
+            {
+                // Create Exception Appointment
+                var aptOccurence = EditedAppointment;
+                var aptException = PopulateBasicAppointmentPropertiesFromForm(
+                                    rsList.PrepareToEdit(aptOccurence, rsList.EditingRecurringSeries)
+                );
+
+                rsList.UpdateAppointment(aptException);
+            }
+            else
+            {
+                // Update Appointment
+                Appointment aptOriginal = EditedAppointment;
+
+                if (rsList.EditingRecurringSeries && (aptOriginal.RecurrenceState == RecurrenceState.Occurrence || aptOriginal.RecurrenceState == RecurrenceState.Exception))
+                    aptOriginal = EditedAppointmentParent;
+
+                Appointment aptToUpdate = PopulateBasicAppointmentPropertiesFromForm(aptOriginal.Clone());
+
+
+
+                rsList.UpdateAppointment(aptToUpdate, aptOriginal);
+
+                try
+                {
+
+                    EduStopActScheduleDto appointment = null;
+                    foreach (EduStopActScheduleDto dto in CurrentActList)
+                    {
+                        if (dto.EduStopActScheduleID.ToString() == aptToUpdate.ID.ToString())
+                        {
+                            appointment = dto;
+                            break;
+                        }
+                    }
+
+
+                    if (appointment != null)
+                    {
+                        appointment.Des = aptToUpdate.Description;
+                        appointment.TimeTo = aptToUpdate.End;
+                        appointment.TimeFrom = aptToUpdate.Start;
+
+                        appointment.ActName = tbActName.Text;
+                        EduActTopicDto topic = null;
+                        if (rbSelectTopic.Checked)
+                        {
+                            appointment.EduActTopicID = ddlTopic.SelectedValue;
+                        }
+                        else
+                        {
+                            appointment.EduActTopicID = tbActivityCode.Text;
+                            topic = new EduActTopicDto();
+                            topic.EduActTopicCode = tbActivityCode.Text;
+                            topic.EduActTopicName = tbName.Text;
+                            appointment.EduActTopicID = topic.EduActTopicID;
+                        }
+
+                        appointment.Location = tbLocation.Text;
+
+                        if (rbSelectType.Checked)
+                        {
+                            appointment.ActType = ddlActivityType.SelectedValue;
+                            appointment.ActTypeDes = null;
+                        }
+                        else
+                        {
+                            appointment.ActType = null;
+                            appointment.ActTypeDes = tbActType.Text;
+                        }
+                        appointment.LastModifier = this.EmpCode;
+
+
+                        //update data to database
+                        service.UpdateEduStopActSchedule(appointment, CurrentTargetList, topic);
+                    }
+                    ReadScheduler(rsList.SelectedDate);
+                }
+                catch (Exception ex)
+                {
+                    ShowMessage("更新失敗:" + ex.Message);
+                    success = false;
+                }
+
+            }
+        }
+
+
+        if (success)
+        {
+            EditedAppointmentID = "";
+            EditedAppointmentParentID = "";
+
+            RadDock1.Closed = true;
+        }
+
+        //CloseWindow(true);
+    }
+
+
+
+
+    #region Scheduler Event
+
+
+    protected void rsList_AppointmentInsert(object sender, Telerik.Web.UI.AppointmentInsertEventArgs e)
+    {
+        //try
+        //{
+        //    EduStopActScheduleDto newappointment = new EduStopActScheduleDto();
+        //    newappointment.Des = e.Appointment.Description;
+        //    newappointment.TimeTo = e.Appointment.End;
+        //    newappointment.TimeFrom = e.Appointment.Start;
+        //    EduActTopicDto topic = CurrentTopicList.Where(c => c.EduActTopicCode == tbActivityCode.Text).FirstOrDefault();
+        //    if (topic == null)
+        //    {
+        //        topic = new EduActTopicDto();
+        //        topic.EduActTopicCode = tbActivityCode.Text;
+        //        topic.EduActTopicName = tbName.Text;
+        //        topic.EduActTopicID = service.InsertEduActTpoic(topic);
+        //    }
+
+        //    newappointment.EduActTopicID = topic.EduActTopicID;
+        //    newappointment.ActType = ddlActivityType.SelectedValue;
+        //    newappointment.EduTermID = CurrentData.EduTermID;
+
+        //    service.InsertEduStopActSchedule(newappointment, CurrentTargetList);
+
+
+        //    ReadScheduler(rsList.SelectedDate);
+        //}
+        //catch (Exception ex)
+        //{
+        //    throw ex;
+        //}
+
+    }
+    protected void rsList_AppointmentUpdate(object sender, Telerik.Web.UI.AppointmentUpdateEventArgs e)
+    {
+        //try
+        //{
+        //    EduStopActScheduleDto appointment = null;
+        //    foreach (EduStopActScheduleDto dto in CurrentActList)
+        //    {
+        //        if (dto.EduStopActScheduleID.ToString() == e.ModifiedAppointment.ID.ToString())
+        //        {
+        //            appointment = dto;
+        //            break;
+        //        }
+        //    }
+
+
+        //    if (appointment != null)
+        //    {
+        //        appointment.Des = e.ModifiedAppointment.Description;
+        //        appointment.TimeTo = e.ModifiedAppointment.End;
+        //        appointment.TimeFrom = e.ModifiedAppointment.Start;
+        //        EduActTopicDto topic = CurrentTopicList.Where(c => c.EduActTopicCode == tbActivityCode.Text).FirstOrDefault();
+        //        if (topic == null)
+        //        {
+        //            topic = new EduActTopicDto();
+        //            topic.EduActTopicCode = tbActivityCode.Text;
+        //            topic.EduActTopicName = tbName.Text;
+        //            topic.EduActTopicID = service.InsertEduActTpoic(topic);
+        //        }
+        //        appointment.EduActTopicID = topic.EduActTopicID;
+
+        //        //update data to database
+        //        service.UpdateEduStopActSchedule(appointment, CurrentTargetList);
+        //    }
+        //    ReadScheduler(rsList.SelectedDate);
+        //}
+        //catch (Exception ex)
+        //{
+        //    throw ex;
+        //}
+
+    }
+    protected void rsList_AppointmentDelete(object sender, Telerik.Web.UI.AppointmentDeleteEventArgs e)
+    {
+        try
+        {
+            EduStopActScheduleDto appointment = null;
+            foreach (EduStopActScheduleDto dto in CurrentActList)
+            {
+                if (dto.EduStopActScheduleID.ToString() == e.Appointment.ID.ToString())
+                {
+                    appointment = dto;
+                    break;
+                }
+            }
+            if (appointment != null)
+            {
+                //delete data from database
+                service.DeleteEduStopActSchedule(new List<EduStopActScheduleDto> { appointment });
+            }
+            ReadScheduler(rsList.SelectedDate);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+
+    bool CreatingExceptionAppointment
+    {
+        get { return (bool)ViewState["CreatingExceptionAppointment"]; }
+        set { ViewState["CreatingExceptionAppointment"] = value; }
+    }
+
+    Appointment EditedAppointment
+    {
+        get
+        {
+            return (EditedAppointmentID != null) ? rsList.Appointments.FindByID(EditedAppointmentID) : null;
+        }
+        set
+        {
+            EditedAppointmentID = value.ID;
+            EditedAppointmentParentID = value.RecurrenceParentID;
+        }
+    }
+
+    Appointment EditedAppointmentParent
+    {
+        get
+        {
+            return (EditedAppointmentParentID != null) ? rsList.Appointments.FindByID(EditedAppointmentParentID) : null;
+        }
+    }
+
+    private object EditedAppointmentID
+    {
+        get { return ViewState["EditedAppointmentID"]; }
+        set { ViewState["EditedAppointmentID"] = value; }
+    }
+
+    private object EditedAppointmentParentID
+    {
+        get { return ViewState["EditedAppointmentParentID"]; }
+        set { ViewState["EditedAppointmentParentID"] = value; }
+    }
+
+    protected void rsList_FormCreating(object sender, Telerik.Web.UI.SchedulerFormCreatingEventArgs e)
+    {
+        if (e.Mode == SchedulerFormMode.Insert || e.Mode == SchedulerFormMode.Edit)
+        {
+            EditedAppointment = e.Appointment;
+            e.Cancel = true;
+        }
+
+        var appointmentToEdit = rsList.PrepareToEdit(e.Appointment, rsList.EditingRecurringSeries);
+
+        ScriptManager.RegisterStartupScript(Page, GetType(), "formScript", "Sys.Application.add_load(openForm);", true);
+        PopulateEditForm(appointmentToEdit);
+    }
+
+
+    private void PopulateEditForm(Appointment editedAppointment)
+    {
+        Appointment appointmentToEdit = rsList.PrepareToEdit(editedAppointment, rsList.EditingRecurringSeries);
+
+        CurrentTargetList = new List<EduActTargetDto>();
+        
+        rdpDateBegin.SelectedDate = rsList.UtcToDisplay(appointmentToEdit.Start);
+        rtpTimeBegin.SelectedDate = rsList.UtcToDisplay(appointmentToEdit.Start);
+        rblTargetType.SelectedIndex = 0;
+        RadTabStrip1.SelectedIndex = 0;
+        RadMultiPage1.SelectedIndex = 0;
+        tbDes.Text = appointmentToEdit.Description;
+
+        tbActivityCode.Text = appointmentToEdit.Subject;
+        if (rcbRole.SelectedValue == "Teacher")
+        {
+            palTimeRange.Visible = true;
+        }
+        else
+        {
+            palTimeRange.Visible = false;
+        }
+        if (appointmentToEdit.ID != null)
+        {
+            btnSaveAs.Visible = true;
+            panRange.Visible = false;
+            EduStopActScheduleDto dto = CurrentActList.Where(c => c.EduStopActScheduleID == appointmentToEdit.ID.ToString()).FirstOrDefault();
+            if (dto != null)
+            {
+                lbActID.Text = dto.EduStopActScheduleID;
+
+                if (dto.ActType != null)
+                {
+                    rbSelectType.Checked = true;
+                    rbOtherType.Checked = false;
+                    ddlActivityType.SelectedValue = dto.ActType;
+                    tbActType.Text = "";
+                }
+                else
+                {
+                    rbSelectType.Checked = false;
+                    rbOtherType.Checked = true;
+                    ddlActivityType.SelectedIndex = 0;
+                    tbActType.Text = dto.ActTypeDes;
+                }
+                tbActName.Text = dto.ActName;
+                ddlTopic.SelectedValue = dto.EduActTopicID;
+                rbSelectTopic.Checked = true;
+                rbAddTopic.Checked = false;
+                panAddTopic.Visible = false;
+                panSelectTopic.Visible = true;
+                tbName.Text = "";
+                tbActivityCode.Text = "";
+                tbLocation.Text = dto.Location;
+                rgAttachment.Visible = true;
+                btnUpload.Visible = true;
+                CurrentTargetList = service.GetEduActTargets(dto.EduStopActScheduleID);
+
+                odsAttachment.Select();
+                rgAttachment.DataBind();
+            }
+            else
+            {
+                lbActID.Text = "";
+                rbSelectType.Checked = false;
+                rbOtherType.Checked = true;
+                ddlActivityType.SelectedIndex = 0;
+                tbActType.Text = "";
+
+                tbActName.Text = "";
+                ddlTopic.SelectedIndex = 0;
+                rbSelectTopic.Checked = true;
+                rbAddTopic.Checked = false;
+                panAddTopic.Visible = false;
+                panSelectTopic.Visible = true;
+                tbName.Text = "";
+                tbActivityCode.Text = "";
+                tbLocation.Text = "";
+                rgAttachment.Visible = false;
+                btnUpload.Visible = false;
+                if (CurrentData.EduTermID != "")
+                {
+                    EduActTargetDto tar = new EduActTargetDto();
+                    tar.TargetID = CurrentData.EduTermID;
+                    tar.TargetType = "EduTerm";
+                    tar = service.FillEduActTargetName(tar);
+                    CurrentTargetList.Add(tar);
+                }
+            }
+
+            rdpDateEnd.SelectedDate = rsList.UtcToDisplay(appointmentToEdit.End);
+            rtpTimeEnd.SelectedDate = rsList.UtcToDisplay(appointmentToEdit.End);
+        }
+        else
+        {
+            lbActID.Text = "";
+            btnSaveAs.Visible = false;
+            panRange.Visible = true;
+            rbSelectType.Checked = false;
+            rbOtherType.Checked = true;
+            ddlActivityType.SelectedIndex = 0;
+            tbActType.Text = "";
+            tbName.Text = "";
+            tbActName.Text = "";
+            tbActivityCode.Text = "";
+            tbLocation.Text = "";
+            rdpDateEnd.SelectedDate = rsList.UtcToDisplay(appointmentToEdit.Start.AddDays(1).AddSeconds(-1));
+            rtpTimeEnd.SelectedDate = rsList.UtcToDisplay(appointmentToEdit.Start.AddDays(1).AddSeconds(-1));
+            rgAttachment.Visible = false;
+            btnUpload.Visible = false;
+            if (CurrentData.EduTermID != "")
+            {
+                EduActTargetDto tar = new EduActTargetDto();
+                tar.TargetID = CurrentData.EduTermID;
+                tar.TargetType = "EduTerm";
+                tar = service.FillEduActTargetName(tar);
+                CurrentTargetList.Add(tar);
+            }
+
+        }
+
+        rgTarget.DataSource = CurrentTargetList;
+        rgTarget.DataBind();
+
+    }
+
+
+    private Appointment PopulateBasicAppointmentPropertiesFromForm()
+    {
+        return PopulateBasicAppointmentPropertiesFromForm(null);
+
+    }
+
+    private Appointment PopulateBasicAppointmentPropertiesFromForm(Appointment apt)
+    {
+
+        Resource topicid = new Resource("topicid", apt == null ? tbActivityCode.Text : "", apt == null ? tbActivityCode.Text : "");
+
+        if (apt == null)
+            apt = new Appointment();
+
+
+        DateTime start = rsList.DisplayToUtc(rdpDateBegin.SelectedDate.Value.Date.AddHours(rtpTimeBegin.SelectedDate.Value.Hour).AddMinutes(rtpTimeBegin.SelectedDate.Value.Minute).AddSeconds(rtpTimeBegin.SelectedDate.Value.Second));
+        DateTime end = rsList.DisplayToUtc(rdpDateEnd.SelectedDate.Value.Date.AddHours(rtpTimeEnd.SelectedDate.Value.Hour).AddMinutes(rtpTimeEnd.SelectedDate.Value.Minute).AddSeconds(rtpTimeEnd.SelectedDate.Value.Second));
+
+        apt.Subject = tbName.Text;
+        apt.Description = tbDes.Text;
+        apt.Start = start;
+        apt.End = end;
+
+
+        Resource existinguserid = apt.Resources.GetResourceByType("topicid");
+        if (existinguserid != null)
+        {
+            apt.Resources.Remove(existinguserid);
+        }
+        apt.Resources.Add(topicid);
+
+        return apt;
+    }
+
+    #endregion
+
+
+    public List<DateTime> GetTargetDate(DateTime startDate, DateTime endDate, int weekInterval, DayOfWeek dayOfWeek)
+    {
+        List<DateTime> result = new List<DateTime>();
+        CultureInfo info = CultureInfo.CurrentCulture;
+        DateTime firstDate = DateTime.MinValue;
+        DateTime firstDateInMonth = DateTime.MinValue;
+        DateTime targetDate = DateTime.MinValue;
+        int startMonth = 0;
+        int endMonth = 0;
+        int firstWeekNumber = 0;
+        int targetWeekNumber = 0;
+        int startweekday = 0;
+        for (int x = startDate.Year; x <= endDate.Year; x++)
+        {
+            startMonth = (x > startDate.Year) ? 1 : startDate.Month;
+            endMonth = (x < endDate.Year) ? 12 : endDate.Month;
+            for (int i = startMonth; i <= endMonth; i++)
+            {
+                firstDateInMonth = new DateTime(x, i, 1);
+                firstDate = new DateTime(firstDateInMonth.Year, 1, 1);
+                startweekday = Convert.ToInt32(firstDate.DayOfWeek);
+                firstWeekNumber = info.Calendar.GetWeekOfYear(firstDateInMonth, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+                targetWeekNumber = firstWeekNumber + (weekInterval - 1);
+                //targetWeekNumber = firstWeekNumber + weekInterval;
+                targetDate = firstDate.AddDays((targetWeekNumber - 1) * 7);
+                while (targetDate.DayOfWeek != dayOfWeek)
+                {
+                    targetDate = targetDate.AddDays(-1);
+                }
+                if (targetDate >= startDate && targetDate <= endDate)
+                {
+                    result.Add(targetDate);
+                }
+            }
+        }
+        return result;
+    }
+    protected void rsList_AppointmentDataBound(object sender, SchedulerEventArgs e)
+    {
+        if (EduTermColl == null)
+            EduTermColl = new List<string>();
+
+        if (ColorCount == null)
+            ColorCount = 0;
+
+        EduStopActScheduleDto dto = CurrentActList.Where(c => c.EduStopActScheduleID == e.Appointment.ID.ToString()).FirstOrDefault();
+        if (dto != null)
+        {
+            if (EduTermColl.Contains(dto.EduTermID))
+            {
+                int index = EduTermColl.IndexOf(dto.EduTermID) % ColorList.Count;
+                e.Appointment.BackColor = ColorList[index];
+            }
+            else
+            {
+                if (ColorCount.Value >= ColorList.Count)
+                {
+                    ColorCount = 0;
+                }
+                ListItem item = new ListItem(dto.EduTermName, dto.EduTermID);
+                item.Attributes.Add("style", "background-color:" + ColorList[ColorCount.Value].Name);
+                BulletedList1.Items.Add(item);
+                EduTermColl.Add(dto.EduTermID);
+                e.Appointment.BackColor = ColorList[ColorCount.Value];
+                ColorCount++;
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("課程：" + dto.EduTermName);
+            sb.AppendLine("主題代碼：" + dto.EduActTopicCode);
+            sb.AppendLine("主題名稱：" + dto.EduActTopicName);
+            sb.AppendLine("活動名稱：" + dto.ActName);
+            sb.AppendLine("活動時間：" + dto.TimeFrom.ToString("yyyy/MM/dd HH:mm") + "~" + dto.TimeTo.ToString("yyy/MM/dd HH:mm"));
+            sb.AppendLine("活動地點：" + dto.Location);
+            if (dto.ActType == null)
+            {
+                sb.AppendLine("活動類型：" + dto.ActTypeDes);
+            }
+            else
+            {
+                sb.AppendLine("活動類型：" + dto.ActTypeName);
+            }
+            sb.AppendLine("說明：" + dto.Des);
+            e.Appointment.ToolTip = sb.ToString();
+        }
+
+    }
+    protected void rsList_NavigationCommand(object sender, SchedulerNavigationCommandEventArgs e)
+    {
+
+    }
+    protected void rsList_NavigationComplete(object sender, SchedulerNavigationCompleteEventArgs e)
+    {
+        if (e.Command == SchedulerNavigationCommand.NavigateToPreviousPeriod
+            || e.Command == SchedulerNavigationCommand.NavigateToNextPeriod
+            || e.Command == SchedulerNavigationCommand.NavigateToSelectedDate
+            )
+        {
+
+            ReadScheduler(rsList.SelectedDate);
+        }
+    }
+
+
+
+    #region 課程查詢
+
+    private void ReadData()
+    {
+        List<EduTermDto> list = service.GetEduTerms(tbEduStopCode.Text, tbEduName.Text);
+        RadGrid1.DataSource = list;
+    }
+    protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
+    {
+        ReadData();
+    }
+
+    protected void RadGrid1_DeleteCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
+    {
+
+    }
+
+    protected void btnQuery_Click(object sender, EventArgs e)
+    {
+        ReadData();
+        RadGrid1.DataBind();
+    }
+
+    protected void RadGrid1_ItemCommand(object sender, GridCommandEventArgs e)
+    {
+
+    }
+
+    //設定template column開啟radwindow動作
+    protected void RadGrid1_ItemCreated(object sender, GridItemEventArgs e)
+    {
+
+    }
+
+
+    //修改group header
+    protected void RadGrid1_ItemDataBound(object sender, GridItemEventArgs e)
+    {
+        if (e.Item is GridGroupHeaderItem)
+        {
+
+            (e.Item as GridGroupHeaderItem).DataCell.Text = (e.Item as GridGroupHeaderItem).DataCell.Text.Substring((e.Item as GridGroupHeaderItem).DataCell.Text.IndexOf(":") + 1);
+
+        }
+    }
+    #region 無資料時隱藏收合圖案
+    protected void RadGrid1_PreRender(object sender, EventArgs e)
+    {
+        HideExpandColumnRecursive(RadGrid1.MasterTableView);
+    }
+    public void HideExpandColumnRecursive(GridTableView tableView)
+    {
+        GridItem[] nestedViewItems = tableView.GetItems(GridItemType.NestedView);
+        foreach (GridNestedViewItem nestedViewItem in nestedViewItems)
+        {
+            foreach (GridTableView nestedView in nestedViewItem.NestedTableViews)
+            {
+                if (nestedView.Items.Count == 0)
+                {
+                    TableCell cell = nestedView.ParentItem["ExpandColumn"];
+                    cell.Controls[0].Visible = false;
+                    cell.Text = " ";
+                    nestedViewItem.Visible = false;
+                }
+                if (nestedView.HasDetailTables)
+                {
+                    HideExpandColumnRecursive(nestedView);
+                }
+            }
+        }
+    }
+    #endregion
+
+    protected void RadGrid1_NeedDataSource1(object sender, GridNeedDataSourceEventArgs e)
+    {
+    }
+    #endregion
+    protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        switch (rblTargetType.SelectedValue)
+        {
+            case "All":
+                palDept.Visible = false;
+                palEduTerm.Visible = false;
+                palEmp.Visible = false;
+                palJobCode.Visible = false;
+                divTeam.Style.Clear();
+                divTeam.Style.Add("display", "none");
+                //palTeam.Visible = false;
+                break;
+            case "Dept":
+                palDept.Visible = true;
+                palEduTerm.Visible = false;
+                palEmp.Visible = false;
+                palJobCode.Visible = false;
+                divTeam.Style.Clear();
+                divTeam.Style.Add("display", "none");                
+            //palTeam.Visible = false;
+                break;
+            case "JobCode":
+                palDept.Visible = false;
+                palEduTerm.Visible = false;
+                palEmp.Visible = false;
+                palJobCode.Visible = true;
+                divTeam.Style.Clear();
+                divTeam.Style.Add("display", "none");                
+            //palTeam.Visible = false;
+                break;
+            case "EduTerm":
+                palDept.Visible = false;
+                palEduTerm.Visible = true;
+                palEmp.Visible = false;
+                palJobCode.Visible = false;
+                divTeam.Style.Clear();
+                divTeam.Style.Add("display", "none");                
+            //palTeam.Visible = false;
+                break;
+            case "EmpCode":
+                palDept.Visible = false;
+                palEduTerm.Visible = false;
+                palEmp.Visible = true;
+                palJobCode.Visible = false;
+                divTeam.Style.Clear();
+                divTeam.Style.Add("display", "none");                
+            //palTeam.Visible = false;
+                break;
+            case "TeamCode":
+                palDept.Visible = false;
+                palEduTerm.Visible = false;
+                palEmp.Visible = false;
+                palJobCode.Visible = false;
+                divTeam.Style.Clear();
+            //palTeam.Visible = false;
+                break;
+        }
+    }
+    protected void rgTarget_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+    {
+        rgTarget.DataSource = CurrentTargetList;
+    }
+    protected void btnAddTarget_Click(object sender, EventArgs e)
+    {
+        EduActTargetDto dto = new EduActTargetDto();
+        dto.TargetType = rblTargetType.SelectedValue;
+        switch (rblTargetType.SelectedValue)
+        {
+            case "All":
+                break;
+            case "Dept":
+                dto.TargetID = ddlDepartment.SelectedValue;
+                break;
+            case "JobCode":
+                dto.TargetID = ddlJobCode.SelectedValue;
+                break;
+            case "EduTerm":
+                if (RadGrid1.SelectedItems.Count > 0)
+                {
+                    dto.TargetID = (RadGrid1.SelectedItems[0] as GridDataItem).GetDataKeyValue("EduTermID").ToString();
+                }
+                break;
+            case "EmpCode":
+                dto.TargetID = tbEmpCode.Text;
+                dto.RoleType = rcbRole.SelectedValue;
+                if (palTimeRange.Visible)
+                {
+                    dto.TimeFrom = rdtpTimeBegin.SelectedDate;
+                    dto.TimeTo = rdtpTimeEnd.SelectedDate;
+                }
+                break;
+            case "TeamCode":
+                dto.TargetID = TreeViewComboBox1.SelectedValue;
+                break;
+        }
+
+        dto = service.FillEduActTargetName(dto);
+        CurrentTargetList.Add(dto);
+        rgTarget.DataSource = CurrentTargetList;
+        rgTarget.DataBind();
+    }
+
+    protected void rgTarget_ItemCommand(object sender, GridCommandEventArgs e)
+    {
+        if (e.CommandName == RadGrid.DeleteSelectedCommandName)
+        {
+
+            List<int> removelist = new List<int>();
+            foreach (GridDataItem item in rgTarget.SelectedItems)
+            {
+                removelist.Add(item.DataSetIndex);
+            }
+
+            for (int i = 0; i < removelist.Count; i++)
+            {
+                CurrentTargetList.RemoveAt(removelist[i]);
+                removelist.RemoveAt(i);
+                i--;
+            }
+
+            rgTarget.DataSource = CurrentTargetList;
+            rgTarget.DataBind();
+        }
+        //ReadData();
+    }
+    protected void rbSelect_CheckedChanged(object sender, EventArgs e)
+    {
+        if (rbSelectTopic.Checked)
+        {
+            panSelectTopic.Visible = true;
+            panAddTopic.Visible = false;
+        }
+
+        if (rbAddTopic.Checked)
+        {
+            panAddTopic.Visible = true;
+            panSelectTopic.Visible = false;
+        }
+    }
+    protected void odsAttachment_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+    {
+        e.InputParameters["eduStopActScheduleID"] = lbActID.Text;
+    }
+    protected void btnUpload_Click(object sender, EventArgs e)
+    {
+        foreach (UploadedFile file in ruploadAttachment.UploadedFiles)
+        {
+            byte[] bytes = new byte[file.InputStream.Length];
+            file.InputStream.Read(bytes, 0, bytes.Length);
+            file.InputStream.Seek(0, SeekOrigin.Begin);
+            service.InsertActAttachment(lbActID.Text, file.FileName.Substring(file.FileName.LastIndexOf(@"\") + 1), bytes, true);
+        }
+        ruploadAttachment.UploadedFiles.Clear();
+        odsAttachment.Select();
+        rgAttachment.DataBind();
+    }
+    protected void rgAttachment_DeleteCommand(object sender, GridCommandEventArgs e)
+    {
+        string attachmentid = (e.Item as GridDataItem).GetDataKeyValue("ActAttachmentID").ToString();
+        service.DeleteActAttachment(attachmentid);
+        odsAttachment.Select();
+        rgAttachment.DataBind();
+    }
+    protected void rgAttachment_ItemDataBound(object sender, GridItemEventArgs e)
+    {
+        if (e.Item is GridDataItem)
+        {
+            GridDataItem item = (GridDataItem)e.Item;
+            ((LinkButton)item["AutoGeneratedDeleteColumn"].Controls[0]).Text = "刪除";
+        }  
+    }
+    protected void rcbRole_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        if (rcbRole.SelectedValue == "Teacher")
+        {
+            palTimeRange.Visible = true;
+        }
+        else
+        {
+            palTimeRange.Visible = false;
+        }
+    }
+    protected void rdpDateBegin_SelectedDateChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)
+    {
+        if ((rbNone.Checked) || (rdpDateEnd.SelectedDate < rdpDateBegin.SelectedDate))
+        {
+            rdpDateEnd.SelectedDate = rdpDateBegin.SelectedDate;
+        }
+    }
+    protected void ddlUnit_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+    {
+        ReadScheduler(rsList.SelectedDate);
+    }
+}

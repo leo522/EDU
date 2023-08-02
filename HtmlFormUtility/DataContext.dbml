@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="www_EduActivity" Class="DataContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=172.18.6.25;Initial Catalog=www_EduActivity;Integrated Security=False;User ID=www_eduactivity_user" SettingsObjectName="HtmlFormUtility.Properties.Settings" SettingsPropertyName="www_EduActivityConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.FORM_INSTANCE_BLOCKS" Member="FORM_INSTANCE_BLOCKS">
+    <Type Name="FORM_INSTANCE_BLOCKS">
+      <Column Name="INSTANCE_BLOCKS_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="INSTANCE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TABLE_BLOCK_ID" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BLOCK_CONTENT" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TABLE_BLOCK_TITLE" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_INSTANCE_EXPRESSIONS" Member="FORM_INSTANCE_EXPRESSIONS">
+    <Type Name="FORM_INSTANCE_EXPRESSIONS">
+      <Column Name="INSTANCE_EXPRESSION_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEMPLATE_EXPRESSION_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="INSTANCE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EXPRESSION_VALUE" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_IMAGES" Member="FORM_TEMPLATE_IMAGES">
+    <Type Name="FORM_TEMPLATE_IMAGES">
+      <Column Name="TEMPLATE_IMAGE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FILE_NAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IMAGE_CONTENT" Type="System.Data.Linq.Binary" DbType="VarBinary(1) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_SQL" Member="FORM_TEMPLATE_SQL">
+    <Type Name="FORM_TEMPLATE_SQL">
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[KEY]" Member="KEY" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOURCEREFSTATEMENT" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_DYNAMIC_ELEMENTS" Member="FORM_TEMPLATE_DYNAMIC_ELEMENTS">
+    <Type Name="FORM_TEMPLATE_DYNAMIC_ELEMENTS">
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[KEY]" Member="KEY" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOURCEREFSTATEMENT" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DISPLAY_DIRECTION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_LIBRARY_OPTION" Member="FORM_TEMPLATE_LIBRARY_OPTION">
+    <Type Name="FORM_TEMPLATE_LIBRARY_OPTION">
+      <Column Name="OPTION_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LIBRARY_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OPTION_TYPE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="OPTION_TEXT" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="OPTION_POINTS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DISPLAY_ORDER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IS_ANSWER" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_OPTION_TYPE" Member="FORM_OPTION_TYPE">
+    <Type Name="FORM_OPTION_TYPE">
+      <Column Name="CODE" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DISPLAY_ORDER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_LIBRARY" Member="FORM_TEMPLATE_LIBRARY">
+    <Type Name="FORM_TEMPLATE_LIBRARY">
+      <Column Name="FORM_TEMPLATE_LIBRARY_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FORM_TEMPLATE_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QUESTION_CONTENT" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="QUESTION_TYPE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DISPLAY" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_SUBMIT_SQL" Member="FORM_TEMPLATE_SUBMIT_SQL">
+    <Type Name="FORM_TEMPLATE_SUBMIT_SQL">
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[KEY]" Member="KEY" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOURCEREFSTATEMENT" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="EXECUTE_FIRST_TIME" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="FORM_TEMPLATES_FORM_TEMPLATE_SUBMIT_SQL" Member="FORM_TEMPLATES" ThisKey="TEMPLATE_ID" OtherKey="TEMPLATE_ID" Type="FORM_TEMPLATES" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_INSTANCE_ATTACHMENTS" Member="FORM_INSTANCE_ATTACHMENTS">
+    <Type Name="FORM_INSTANCE_ATTACHMENTS">
+      <Column Name="ATTACHMENT_ID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="INSTANCE_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ATTACHMENT" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="FORM_INSTANCES_FORM_INSTANCE_ATTACHMENTS" Member="FORM_INSTANCES" ThisKey="INSTANCE_ID" OtherKey="INSTANCE_ID" Type="FORM_INSTANCES" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_NECESSARY" Member="FORM_TEMPLATE_NECESSARY">
+    <Type Name="FORM_TEMPLATE_NECESSARY">
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(80) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ENABLE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MESSAGE" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_INSTANCE_TARGETS" Member="FORM_INSTANCE_TARGETS">
+    <Type Name="FORM_INSTANCE_TARGETS">
+      <Column Name="TargetID" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="INSTANCE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TargetOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="TargetType" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AlertTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TargetSource" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="FORM_INSTANCES_FORM_INSTANCE_TARGETS" Member="FORM_INSTANCES" ThisKey="INSTANCE_ID" OtherKey="INSTANCE_ID" Type="FORM_INSTANCES" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_ELEMENT_READONLY" Member="FORM_TEMPLATE_ELEMENT_READONLies">
+    <Type Name="FORM_TEMPLATE_ELEMENT_READONLY">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEMPLATE_ELEMELT_ID" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="SETTINGTYPE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SETTINGID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="JOB_CODE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_SINGLE" Member="FORM_TEMPLATE_SINGLE">
+    <Type Name="FORM_TEMPLATE_SINGLE">
+      <Column Name="SettingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TemplateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDs" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_INSTANCE_ELEMENTS" Member="FORM_INSTANCE_ELEMENTS">
+    <Type Name="FORM_INSTANCE_ELEMENTS">
+      <Column Name="INSTANCE_ELEMENT_ID" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="INSTANCE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ELEMENT_VALUE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SELECT_VALUE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_GROUPS" Member="FORM_TEMPLATE_GROUPS">
+    <Type Name="FORM_TEMPLATE_GROUPS">
+      <Column Name="GROUP_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GROUP_NAME" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="DISPLAY_ORDER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TO_EVALTARGET" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_EXPRESSIONS" Member="FORM_TEMPLATE_EXPRESSIONS">
+    <Type Name="FORM_TEMPLATE_EXPRESSIONS">
+      <Column Name="TEMPLATE_EXPRESSION_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TEMPLATE_EXPRESSION_NAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EXPRESSION" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="EXECUTE_ORDER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ISFINALSCORE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ALLOWUSERDEFINE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_SCRIPT" Member="FORM_TEMPLATE_SCRIPT">
+    <Type Name="FORM_TEMPLATE_SCRIPT">
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SCRIPT_CONTENT" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_INSTANCES" Member="FORM_INSTANCES">
+    <Type Name="FORM_INSTANCES">
+      <Column Name="INSTANCE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="INSTANCE_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="INSTANCE_CREATE_DATETIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="INSTANCE_ALTER_DATETIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="INSTANCE_REMARK" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="INSTANCE_CONTENT" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="INHOSPID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATER" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="expireDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TargetType" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TargetID" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="PARENT_INSTANCE_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EvalTargetID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IsPass" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="FORM_INSTANCES_FORM_INSTANCE_ATTACHMENTS" Member="FORM_INSTANCE_ATTACHMENTS" ThisKey="INSTANCE_ID" OtherKey="INSTANCE_ID" Type="FORM_INSTANCE_ATTACHMENTS" />
+      <Association Name="FORM_INSTANCES_FORM_INSTANCE_TARGETS" Member="FORM_INSTANCE_TARGETS" ThisKey="INSTANCE_ID" OtherKey="INSTANCE_ID" Type="FORM_INSTANCE_TARGETS" />
+      <Association Name="FORM_TEMPLATES_FORM_INSTANCES" Member="FORM_TEMPLATES" ThisKey="TEMPLATE_ID" OtherKey="TEMPLATE_ID" Type="FORM_TEMPLATES" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATES" Member="FORM_TEMPLATES">
+    <Type Name="FORM_TEMPLATES">
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PARENT_TEMPLATE_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TEMPLATE_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TEMPLATE_CATEGORY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TEMPLATE_CREATE_DATATIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TEMPLATE_ALTER_DATATIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TEMPLATE_CONTENT" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TEMPLATE_REMARK" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TEMPLATE_TYPE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ALLOW_ATTACHMENT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="SCORE_FIELD_ID" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ALERT_NEXT_MESSAGE" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="DISPLAY_TO_EVALTARGET" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ENABLED" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ALLOW_NEXT_TARGET_EDIT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IS_USER_DEFINE_TARGET" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NEEDPASS" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ALLOW_RETURN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ALLOW_TAKEBACK" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ALLOW_VIEW_EVALTARGETDATA" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="FORM_TEMPLATES_FORM_TEMPLATE_SUBMIT_SQL" Member="FORM_TEMPLATE_SUBMIT_SQL" ThisKey="TEMPLATE_ID" OtherKey="TEMPLATE_ID" Type="FORM_TEMPLATE_SUBMIT_SQL" />
+      <Association Name="FORM_TEMPLATES_FORM_INSTANCES" Member="FORM_INSTANCES" ThisKey="TEMPLATE_ID" OtherKey="TEMPLATE_ID" Type="FORM_INSTANCES" />
+      <Association Name="FORM_TEMPLATES_FORM_TEMPLATE_PERMISSION" Member="FORM_TEMPLATE_PERMISSION" ThisKey="TEMPLATE_ID" OtherKey="TEMPLATE_ID" Type="FORM_TEMPLATE_PERMISSION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_PERMISSION" Member="FORM_TEMPLATE_PERMISSION">
+    <Type Name="FORM_TEMPLATE_PERMISSION">
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HOSPCODE" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CREATER" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="FORM_TEMPLATES_FORM_TEMPLATE_PERMISSION" Member="FORM_TEMPLATES" ThisKey="TEMPLATE_ID" OtherKey="TEMPLATE_ID" Type="FORM_TEMPLATES" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORM_TEMPLATE_ELEMENTS" Member="FORM_TEMPLATE_ELEMENTS">
+    <Type Name="FORM_TEMPLATE_ELEMENTS">
+      <Column Name="TEMPLATE_ELEMENT_ID" Type="System.String" DbType="VarChar(60) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TEMPLATE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CONTROL_TYPE" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="DATA_TYPE" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="POINTS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DISPLAY_NAME" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="GROUP_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ISHIDE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MAXPOINT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BINDVALUE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BINDSQL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ALLOWOVER" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MinTextCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxTextCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

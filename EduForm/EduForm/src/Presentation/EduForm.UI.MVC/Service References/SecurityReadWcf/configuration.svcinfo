@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.WSHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&#60;?xml version="1.0" encoding="utf-16"?&#62;&#60;Data name="WSHttpBinding_ISecurityReadWCFService"&#62;&#60;reliableSession enabled="true" /&#62;&#60;security mode="None" /&#62;&#60;/Data&#62;" bindingType="wsHttpBinding" name="WSHttpBinding_ISecurityReadWCFService" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&#60;?xml version="1.0" encoding="utf-16"?&#62;&#60;Data address="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc" binding="wsHttpBinding" bindingConfiguration="WSHttpBinding_ISecurityReadWCFService" contract="SecurityReadWcf.ISecurityReadWCFService" name="WSHttpBinding_ISecurityReadWCFService" /&#62;" digest="&#60;?xml version="1.0" encoding="utf-16"?&#62;&#60;Data address="http://intraap.server.kmuh.org.tw/WEB/SecurityRead.Services/SecurityReadWCFService.svc" binding="wsHttpBinding" bindingConfiguration="WSHttpBinding_ISecurityReadWCFService" contract="SecurityReadWcf.ISecurityReadWCFService" name="WSHttpBinding_ISecurityReadWCFService" /&#62;" contractName="SecurityReadWcf.ISecurityReadWCFService" name="WSHttpBinding_ISecurityReadWCFService" />
+  </endpoints>
+</configurationSnapshot>

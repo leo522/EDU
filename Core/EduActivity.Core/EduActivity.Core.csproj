@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4CD7C04B-D47B-45F7-A7C5-9BDD05A08AC8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KMU.EduActivity</RootNamespace>
+    <AssemblyName>EduActivity.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AppFramework, Version=1.0.0.12227, Culture=neutral, PublicKeyToken=d9960e1bfafcce89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\KMUH_HIS\Common\AppFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.3.9.1, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <HintPath>..\..\website\Bin\Oracle.DataAccess.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.XML" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="gudusoft.gsqlparser, Version=1.12.13.27257, Culture=neutral, PublicKeyToken=1e1734490a0fe9ed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\gudusoft.gsqlparser.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Telerik.OpenAccess, Version=2013.3.1320.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.3.1320.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+    <Reference Include="U_personal_info">
+      <HintPath>..\..\website\Bin\U_personal_info.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationLayer\Assemblers\Assembler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\Converter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\OpenAccessAssemblers.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\OpenAccessAssemblers2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenAccessAssemblers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\SelectActTypeAssembler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\SelectEduActJobCodeAssembler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\SelectEduActJobCodeAssembler.ext.cs" />
+    <Compile Include="ApplicationLayer\Assemblers\SelectGroupTypeAssembler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\SelectGroupTypeAssembler.ext.cs" />
+    <Compile Include="ApplicationLayer\Assemblers\SelectKmuDoctorAssembler.cs" />
+    <Compile Include="ApplicationLayer\Assemblers\SelectKmuDoctorAssembler.ext.cs" />
+    <Compile Include="ApplicationLayer\Assemblers\SelectKmuVsAssembler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\SelectKmuVsAssembler.ext.cs" />
+    <Compile Include="ApplicationLayer\Assemblers\SelectVKmuempAssembler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\SelectVKmuempAssembler.ext.cs" />
+    <Compile Include="ApplicationLayer\Assemblers\SelectVKmuempDataAssembler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Assemblers\SelectVKmuempDataAssembler.ext.cs" />
+    <Compile Include="ApplicationLayer\DTO\BaseDTOEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\OpenAccessTransports.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\OpenAccessTransports2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenAccessTransports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectActTypeDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectEduActJobCodeDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectEduActJobCodeDto.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectGroupTypeDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectGroupTypeDto.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectKmuDoctorDto.cs" />
+    <Compile Include="ApplicationLayer\DTO\SelectKmuDoctorDto.ext.cs" />
+    <Compile Include="ApplicationLayer\DTO\SelectKmuVsDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectKmuVsDto.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectVKmuempDataDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectVKmuempDataDto.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectVKmuempDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\DTO\SelectVKmuempDto.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Services\EduActivityAppService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Services\IEduActivityAppService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Services\IOpenAccessAppService.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Services\IOpenAccessAppService2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IOpenAccessAppService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationLayer\Services\OpenAccessAppService.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationLayer\Services\OpenAccessAppService2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenAccessAppService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationLayer\Services\OpenAccessServices2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenAccessServices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Contracts\ISelectActTypeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Contracts\ISelectEduActJobCodeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Contracts\ISelectGroupTypeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Contracts\ISelectKmuDoctorRepository.cs" />
+    <Compile Include="DomainModel\Contracts\ISelectKmuVsRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Contracts\ISelectVKmuempDataRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Contracts\ISelectVKmuempRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Entities\Account.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\AccountRole.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\AuthMenu.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\AuthRole.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\AutoEduFormTemplateExcept.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\AutoEduFormTemplateList.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\AutoEduFormTemplateTarget.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\DepSecDatum.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduActBooking.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduActTarget.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduActTopic.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduActType.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduActTypeRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduActTypeRoleRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduActViewTarget.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduFormStasticPermission.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduFormTemplateList.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduFormTemplateTarget.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduMenu.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportInsItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportInsItemDet.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportInsItemRejectHi.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportInstance.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportItemDet.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportItemTarget.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportPRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportTemplate.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportTemplateItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduPassportTemplateTarget.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduQuestion.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduRefTeacher.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduScore.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduSentence.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduSetting.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduStop.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduStopActAttachment.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduStopActSchedule.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTeacherType.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTeam.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTeamMemberRundown.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTeamRundown.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\BaseEntity.cs" />
+    <Compile Include="DomainModel\Entities\EduTeamMember.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTerm.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTermCode.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTermFormInstance.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTermFormReq.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTermFormReqTemplate.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\EduTermFormReqTemplateDet.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ElearningBooking.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ElearningClass.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ElearningEmpItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ElearningEmpItemLog.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ElearningItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\fn_GetChildActTypeResultSet0.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\fn_GetChildDeptbyCodeResultSet0.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\fn_GetEduStopActScheduleResultSet0.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FormCategory.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FormCategoryRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_INSTANCE.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_INSTANCE_ATTACHMENT.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_INSTANCE_ELEMENT.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_INSTANCE_RETURN_LOG.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_INSTANCE_TARGET.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_INSTANCE_TRANSLOG.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_TEMPLATE.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_TEMPLATE_ELEMENT.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_TEMPLATE_GROUP.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\FORM_TEMPLATE_PERMISSION.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\Form_ToDo_List.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\f_EduStopActScheduleResultSet0.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\f_EduStopActScheduleResultSet01.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\GoodVSDataDe.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\GoodVSDatum.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\HealTeachTime.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\HealTeachTimeRate.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_ActUploadFile.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_ERCase.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_ERCase_Eval.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_ERCase_EvalDet.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_ERExam.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_ERExamScore.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_ERExamStage.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_IPDDataCount.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_Menu.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_MenuParam.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_MenuRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_OSCEExam.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_OSCEExamScore.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_OSCEExamStage.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\IKASA_UploadFile.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\JobFormSetting.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\LoginLog.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\MedicalTeachPoint.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\Member.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\MessageBoard.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\MonthlyTeachPointCalcDatum.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\MyList.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\MyListDet.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\News.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\NewsViewTarget.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\News_Attachment.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\OpenAccessEntities.ext.cs" />
+    <Compile Include="DomainModel\Entities\OSCEBlockTime.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\OSCECert.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\OutstandindAttendee.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\OutstandindPerformance.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\PassPortCheckItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\PassPortDocGrade.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\PassPortJobFinalMan.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\PassPortJobTitleItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\PassPortSpecialList.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\PassPortStudentApplicationItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\PassPortStudentApplicationItemFailLog.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\RecordEduActRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\RecordInsDet.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\RecordInsReader.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\RecordInsSignIn.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\RecordInstance.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\RecordInstanceRejectLog.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\RecordInsViewer.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\RecordTemplate.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\SchedulerLog.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ScoreInstance.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ScoreInstanceDetail.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ScoreSetting.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ScoreSettingDetail.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ScoreSettingJob.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\ScoreSettingScoreType.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\SelectActType.cs" />
+    <Compile Include="DomainModel\Entities\SelectActType.ext.cs" />
+    <Compile Include="DomainModel\Entities\SelectActType.metadata.cs" />
+    <Compile Include="DomainModel\Entities\SelectEduActJobCode.cs" />
+    <Compile Include="DomainModel\Entities\SelectEduActJobCode.ext.cs" />
+    <Compile Include="DomainModel\Entities\SelectEduActJobCode.metadata.cs" />
+    <Compile Include="DomainModel\Entities\SelectGroupType.cs" />
+    <Compile Include="DomainModel\Entities\SelectGroupType.ext.cs" />
+    <Compile Include="DomainModel\Entities\SelectGroupType.metadata.cs" />
+    <Compile Include="DomainModel\Entities\SelectKmuDoctor.cs" />
+    <Compile Include="DomainModel\Entities\SelectKmuDoctor.ext.cs" />
+    <Compile Include="DomainModel\Entities\SelectKmuDoctor.metadata.cs" />
+    <Compile Include="DomainModel\Entities\SelectKmuVs.cs" />
+    <Compile Include="DomainModel\Entities\SelectKmuVs.ext.cs" />
+    <Compile Include="DomainModel\Entities\SelectKmuVs.metadata.cs" />
+    <Compile Include="DomainModel\Entities\SelectVKmuemp.cs" />
+    <Compile Include="DomainModel\Entities\SelectVKmuemp.ext.cs" />
+    <Compile Include="DomainModel\Entities\SelectVKmuemp.metadata.cs" />
+    <Compile Include="DomainModel\Entities\SelectVKmuempData.cs" />
+    <Compile Include="DomainModel\Entities\SelectVKmuempData.ext.cs" />
+    <Compile Include="DomainModel\Entities\SelectVKmuempData.metadata.cs" />
+    <Compile Include="DomainModel\Entities\TeachPointCalcType.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TeachPointCalcTypeRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TeachPointEmpItemDatum.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TeachPointItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TeachPointItemRequire.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TeachPointJobItem.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TeachPointRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TeachTimeKpiRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TeachTimeRate.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TeachTimeType.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\TrainingTime.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\VoteGCond.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\VoteGroup.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\VoteInsDet.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\VoteInstance.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\VoteJob.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\VoteMain.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\VoteTarget.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\VoteUserDefineList.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_CodeRef.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_department.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_ExpireFormInstance.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_hosp.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_KmuEmp.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_kmujob.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_KPINorm.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_KPINormExtraField.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_KPIRound.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Entities\V_MemeberRundown.generated.cs">
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DomainModel\Factories\EntityFactories.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Factories\SelectActTypeFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Factories\SelectEduActJobCodeFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Factories\SelectGroupTypeFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Factories\SelectKmuDoctorFactory.cs" />
+    <Compile Include="DomainModel\Factories\SelectKmuVsFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Factories\SelectVKmuempDataFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Factories\SelectVKmuempFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\Specifications\Specifications.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\MultiSourceRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\OpenAccessRepositories2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenAccessRepositories.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\RepositoryExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectActTypeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectActTypeRepository.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectEduActJobCodeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectEduActJobCodeRepository.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectGroupTypeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectGroupTypeRepository.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectKmuDoctorRepository.cs" />
+    <Compile Include="Infrastructure\Data\Repositories\SelectKmuDoctorRepository.ext.cs" />
+    <Compile Include="Infrastructure\Data\Repositories\SelectKmuVsRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectKmuVsRepository.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectVKmuempDataRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectVKmuempDataRepository.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectVKmuempRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Data\Repositories\SelectVKmuempRepository.ext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DomainModel\Entities\EduActivityDiagrams.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EduActivityDiagrams.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ApConnService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationLayer\Utility\OracleConnectionUtils.cs" />
+    <Compile Include="Service References\PasswordService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <OpenAccessDeploy Include="DomainModel\Entities\EduActivityDiagrams.rlinq">
+      <Generator>MetaModelCodeGenerator</Generator>
+      <LastGenOutput>EduActivityDiagrams.cs</LastGenOutput>
+    </OpenAccessDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ApplicationLayer\Assemblers\OpenAccessAssemblers.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OpenAccessAssemblers2.cs</LastGenOutput>
+    </None>
+    <None Include="ApplicationLayer\DTO\OpenAccessTransports.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OpenAccessTransports2.cs</LastGenOutput>
+    </None>
+    <None Include="ApplicationLayer\Services\IOpenAccessAppService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IOpenAccessAppService2.cs</LastGenOutput>
+    </None>
+    <None Include="ApplicationLayer\Services\OpenAccessAppService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OpenAccessAppService2.cs</LastGenOutput>
+    </None>
+    <None Include="ApplicationLayer\Services\OpenAccessServices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OpenAccessServices2.cs</LastGenOutput>
+    </None>
+    <None Include="Infrastructure\Data\Repositories\OpenAccessRepositories.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OpenAccessRepositories2.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ApConnService\KMU.EduActivity.ApConnService.GetDBReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ApConnService\KMU.EduActivity.ApConnService.PasswordChangeReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ApConnService\KMU.EduActivity.ApConnService.PasswordResetReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ApConnService\KMU.EduActivity.ApConnService.ValidatePWDReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ApConnService\SOAP1.wsdl" />
+    <None Include="Service References\ApConnService\SOAP7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ApConnService\SOAP71.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ApConnService\SOAP72.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ApConnService\SOAP73.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ApConnService\SOAP74.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ApConnService\SOAP75.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ApConnService\SOAP76.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PasswordService\KMU.EduActivity.PasswordService.CheckGuidKeyReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PasswordService\KMU.EduActivity.PasswordService.GetHostHospitalReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PasswordService\KMU.EduActivity.PasswordService.KmuEmpDataReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PasswordService\KMU.EduActivity.PasswordService.ModifyPasswordReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PasswordService\KMU.EduActivity.PasswordService.ResetPasswordReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PasswordService\KMU.EduActivity.PasswordService.ValidatePasswordReturnCollect.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\PasswordService\PasswordServiceWCFService.wsdl" />
+    <None Include="Service References\PasswordService\PasswordServiceWCFService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PasswordService\PasswordServiceWCFService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PasswordService\PasswordServiceWCFService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PasswordService\PasswordServiceWCFService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PasswordService\PasswordServiceWCFService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PasswordService\PasswordServiceWCFService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PasswordService\PasswordServiceWCFService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PasswordService\PasswordServiceWCFService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PasswordService\PasswordServiceWCFService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DomainModel\Services\DesignNotes.txt" />
+    <None Include="Service References\PasswordService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PasswordService\configuration.svcinfo" />
+    <None Include="Service References\PasswordService\configuration91.svcinfo" />
+    <None Include="Service References\PasswordService\PasswordServiceWCFService.disco" />
+    <None Include="Service References\ApConnService\SOAP1.disco" />
+    <None Include="Service References\ApConnService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ApConnService\configuration.svcinfo" />
+    <None Include="Service References\ApConnService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\HtmlFormUtility\HtmlFormUtility.csproj">
+      <Project>{DE8B353E-EE47-4162-AFA3-30377684C862}</Project>
+      <Name>HtmlFormUtility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ApConnService\" />
+    <WCFMetadataStorage Include="Service References\PasswordService\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+  <Import Condition="Exists('$(MSBuildExtensionsPath)\OpenAccess.targets')" Project="$(MSBuildExtensionsPath)\OpenAccess.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(TargetPath) $(TargetDir)\..\website\job\ /y</PostBuildEvent>
+  </PropertyGroup>
+</Project>

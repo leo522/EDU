@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd2" namespace="http://KMUGService/GetDBConnection" />
+  <xs:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd3" namespace="http://KMUGService/ValidatePWD" />
+  <xs:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/KMUGService.SystemAPI.StructureClass" />
+  <xs:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd5" namespace="http://KMUGService/PasswordReset" />
+  <xs:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd6" namespace="http://KMUGService/PasswordChange" />
+  <xs:element name="GetDBConnectionWithAuto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDBConnectionWithAutoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://KMUGService/GetDBConnection" minOccurs="0" name="GetDBConnectionWithAutoResult" nillable="true" type="q1:GetDBReturnCollect" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDBConnectionWithHospCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Hospital" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ServerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDBConnectionWithHospCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://KMUGService/GetDBConnection" minOccurs="0" name="GetDBConnectionWithHospCodeResult" nillable="true" type="q2:GetDBReturnCollect" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPasswordWithEncryption">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EncryptionPWD" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AuthPoing" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LoginIP" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPasswordWithEncryptionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://KMUGService/ValidatePWD" minOccurs="0" name="CheckPasswordWithEncryptionResult" nillable="true" type="q3:ValidatePWDReturnCollect" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PWD" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AuthPoing" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LoginIP" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://KMUGService/ValidatePWD" minOccurs="0" name="CheckPasswordResult" nillable="true" type="q4:ValidatePWDReturnCollect" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPasswordLv3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PWD" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AuthPoing" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LoginIP" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPasswordLv3Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://KMUGService/ValidatePWD" minOccurs="0" name="CheckPasswordLv3Result" nillable="true" type="q5:ValidatePWDReturnCollect" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPasswordTMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PWD" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPasswordTMSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://KMUGService/ValidatePWD" minOccurs="0" name="CheckPasswordTMSResult" nillable="true" type="q6:ValidatePWDReturnCollect" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPwd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PWD" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckPwdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://KMUGService/ValidatePWD" minOccurs="0" name="CheckPwdResult" nillable="true" type="q7:ValidatePWDReturnCollect" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PasswordReset">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="employeeID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userTaiwanID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userBirthday" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="userIP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="changePoint" nillable="true" type="xs:string" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/KMUGService.SystemAPI.StructureClass" minOccurs="0" name="resetType" type="q8:EnumCol.EnumResetPasswordType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PasswordResetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://KMUGService/PasswordReset" minOccurs="0" name="PasswordResetResult" nillable="true" type="q9:PasswordResetReturnCollect" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangePassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="employeeID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="oldPasswordLV2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPasswordLV1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPasswordLV2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userIP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="changePoint" nillable="true" type="xs:string" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/KMUGService.SystemAPI.StructureClass" minOccurs="0" name="encrypype" type="q10:EnumCol.EnumEncryptType" />
+        <xs:element minOccurs="0" name="isAlreadyEncryptPassword" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangePasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://KMUGService/PasswordChange" minOccurs="0" name="ChangePasswordResult" nillable="true" type="q11:PasswordChangeReturnCollect" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

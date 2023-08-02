@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="db4845f0-b803-4f70-8ac6-54444a66571f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://intraweb.server.kmuh.org.tw/web/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SOAP7.xsd" MetadataType="Schema" ID="6f032833-8394-48ea-9d01-7451a56ea24c" SourceId="1" SourceUrl="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd3" />
+    <MetadataFile FileName="SOAP71.xsd" MetadataType="Schema" ID="ebecb672-602a-456c-bf26-3ac504f05695" SourceId="1" SourceUrl="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd2" />
+    <MetadataFile FileName="SOAP72.xsd" MetadataType="Schema" ID="8134c629-980e-40c4-a854-37e64d0a8b40" SourceId="1" SourceUrl="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd5" />
+    <MetadataFile FileName="SOAP73.xsd" MetadataType="Schema" ID="6f12660a-54c1-4389-bacb-a3a7e5e01b87" SourceId="1" SourceUrl="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd1" />
+    <MetadataFile FileName="SOAP74.xsd" MetadataType="Schema" ID="f96c7d53-ddca-410b-8bea-b01841bae168" SourceId="1" SourceUrl="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd4" />
+    <MetadataFile FileName="SOAP1.disco" MetadataType="Disco" ID="09d565d4-5866-41a7-b38d-8b08db6560a4" SourceId="1" SourceUrl="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?disco" />
+    <MetadataFile FileName="SOAP1.wsdl" MetadataType="Wsdl" ID="29515062-72e0-412e-b3c4-c6bef37a3f42" SourceId="1" SourceUrl="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?wsdl" />
+    <MetadataFile FileName="SOAP75.xsd" MetadataType="Schema" ID="0d648ac0-17fe-4f3e-a88b-8a2f070734f8" SourceId="1" SourceUrl="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd0" />
+    <MetadataFile FileName="SOAP76.xsd" MetadataType="Schema" ID="8f592d14-e768-4b7c-afa2-fa72a877caac" SourceId="1" SourceUrl="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd6" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

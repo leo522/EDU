@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="EduFormContext" namespace="KMUH.EduForm.DomainModel.Entities" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+  <orm:orm name="EduFormContext" backend="mssql" xmlns:orm="http://tempuri.org/ORM">
+    <orm:namespace name="KMUH.EduForm.DomainModel.Entities" default="true">
+      <orm:class name="FORM_INSTANCE" uniqueId="815a5a6d-bd8c-482b-aef1-25f99b4bfbc6">
+        <orm:table name="FORM_INSTANCES" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="INSTANCE_ID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_iNSTANCE_ID" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_iNSTANCE_ID" property="INSTANCE_ID" behavior="readwrite" uniqueId="d240218b-f3b5-44d9-91d8-c1538cbbb695" type="System.Int32">
+          <orm:column name="INSTANCE_ID" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_tEMPLATE_ID" property="TEMPLATE_ID" behavior="readwrite" uniqueId="82d1a910-5992-4642-a59a-cbb3e9c2c93f" type="System.Int32">
+          <orm:column name="TEMPLATE_ID" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_iNSTANCE_NAME" property="INSTANCE_NAME" behavior="readwrite" uniqueId="24f66f2b-566f-4cc1-aeb5-9fe64cdc82bd" type="System.String">
+          <orm:column name="INSTANCE_NAME" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_iNSTANCE_CREATE_DATETIME" property="INSTANCE_CREATE_DATETIME" behavior="readwrite" uniqueId="a552f4bc-be11-45d8-b590-1411b38c5518" type="System.DateTime">
+          <orm:column name="INSTANCE_CREATE_DATETIME" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_iNSTANCE_ALTER_DATETIME" property="INSTANCE_ALTER_DATETIME" behavior="readwrite" uniqueId="2250b714-4a25-457a-8760-36a769e8b8c0" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="INSTANCE_ALTER_DATETIME" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_iNSTANCE_REMARK" property="INSTANCE_REMARK" behavior="readwrite" uniqueId="91f71940-f61e-4c47-9199-770d84106a9f" type="System.String">
+          <orm:column name="INSTANCE_REMARK" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_iNSTANCE_CONTENT" property="INSTANCE_CONTENT" behavior="readwrite" uniqueId="5a9aa392-605c-47ea-a85b-fe6aaf46a366" type="System.String">
+          <orm:column name="INSTANCE_CONTENT" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_iNHOSPID" property="INHOSPID" behavior="readwrite" uniqueId="35a51091-12b0-4a73-b8f9-be6050bbeffb" type="System.String">
+          <orm:column name="INHOSPID" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_cREATER" property="CREATER" behavior="readwrite" uniqueId="3dca7ed3-43f9-4401-ab1c-fa18995a0217" type="System.String">
+          <orm:column name="CREATER" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_eXPIREDATE" property="EXPIREDATE" behavior="readwrite" uniqueId="4639e266-3252-4bb3-8667-7ebe2ab5eeef" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="expireDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_tARGETTYPE" property="TARGETTYPE" behavior="readwrite" uniqueId="d33b7049-5dbc-4088-b4fb-c2cca8fe8b1a" type="System.String">
+          <orm:column name="TargetType" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_tARGETID" property="TARGETID" behavior="readwrite" uniqueId="0ba2ec8b-241a-4052-8006-968eab1f2b70" type="System.String">
+          <orm:column name="TargetID" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_sTATUS" property="STATUS" behavior="readwrite" uniqueId="9f8eda72-61c0-462b-a09c-727526c63264" type="System.Char">
+          <orm:column name="Status" sql-type="nvarchar" nullable="false" length="1" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_pARENT_INSTANCE_ID" property="PARENT_INSTANCE_ID" behavior="readwrite" uniqueId="d0df67ec-1d50-45a4-80bf-2d45233a958e" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="PARENT_INSTANCE_ID" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_eVALTARGETID" property="EVALTARGETID" behavior="readwrite" uniqueId="5dfc2559-8a19-4d0e-b861-a34dc82f2ddf" type="System.String">
+          <orm:column name="EvalTargetID" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_iSPASS" property="ISPASS" behavior="readwrite" uniqueId="4a37633b-c5e2-4587-aaac-1cc259fd4cbe" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="IsPass" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:index name="idx_Nonclustered_FORM_INSTANCES_TargetID_EvalTargetID">
+          <orm:columnMapping>
+            <orm:column name="TargetID" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="EvalTargetID" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_for_instances_02">
+          <orm:columnMapping>
+            <orm:column name="TEMPLATE_ID" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="cls_1">
+          <orm:columnMapping>
+            <orm:column name="Status" sql-type="nvarchar" nullable="false" length="1" scale="0" ado-type="UnicodeStringVariableLength" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="PARENT_INSTANCE_ID" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="TEMPLATE_ID" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+    </orm:namespace>
+    <orm:schema schema="">
+      <orm:table name="FORM_INSTANCES">
+        <orm:column name="INSTANCE_ID" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="TEMPLATE_ID" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="INSTANCE_NAME" sql-type="nvarchar" nullable="true" length="100" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="INSTANCE_CREATE_DATETIME" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="INSTANCE_ALTER_DATETIME" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="INSTANCE_REMARK" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="INSTANCE_CONTENT" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="INHOSPID" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="CREATER" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="expireDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="TargetType" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="TargetID" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="Status" sql-type="nvarchar" nullable="false" length="1" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="PARENT_INSTANCE_ID" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="EvalTargetID" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="IsPass" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        <orm:index name="idx_Nonclustered_FORM_INSTANCES_TargetID_EvalTargetID">
+          <orm:columnMapping>
+            <orm:column name="TargetID" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="EvalTargetID" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="idx_for_instances_02">
+          <orm:columnMapping>
+            <orm:column name="TEMPLATE_ID" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="cls_1">
+          <orm:columnMapping>
+            <orm:column name="Status" sql-type="nvarchar" nullable="false" length="1" scale="0" ado-type="UnicodeStringVariableLength" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="PARENT_INSTANCE_ID" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="TEMPLATE_ID" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:table>
+    </orm:schema>
+    <orm:relational-naming-settings>
+      <orm:remove-leading-underscore>False</orm:remove-leading-underscore>
+      <orm:source-strategy>Property</orm:source-strategy>
+      <orm:remove-camel-case>False</orm:remove-camel-case>
+      <orm:delimit-sql>false</orm:delimit-sql>
+    </orm:relational-naming-settings>
+  </orm:orm>
+  <ModelSettings xmlns="">
+    <AppConfigConnectionPropertyName>EduForm</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>data source=172.18.6.25;initial catalog=www_EduActivity;integrated security=False;user id=www_eduactivity_user;password=eduact*user</AppConfigConnectionString>
+    <NamingSettings>
+      <ClassRules>
+        <CaseMode>Upper</CaseMode>
+        <PluralizationMode>Singularize</PluralizationMode>
+      </ClassRules>
+      <FieldRules>
+        <AddPrefix>_</AddPrefix>
+        <CaseMode>CamelCase</CaseMode>
+      </FieldRules>
+      <PropertyRules>
+        <CaseMode>Upper</CaseMode>
+      </PropertyRules>
+      <NavigationPropertyRules />
+    </NamingSettings>
+    <CodeGenerationSettings>
+      <MappingDefinitionType>Xml</MappingDefinitionType>
+    </CodeGenerationSettings>
+    <SchemaUpdateSettings />
+    <BackendConfigurationSettings>
+      <BackendConfiguration>
+        <Backend>MsSql</Backend>
+        <ProviderName>System.Data.SqlClient</ProviderName>
+        <ConnectionPool>
+          <Pool>ADO</Pool>
+        </ConnectionPool>
+        <Logging>
+          <MetricStoreSnapshotInterval>0</MetricStoreSnapshotInterval>
+        </Logging>
+      </BackendConfiguration>
+    </BackendConfigurationSettings>
+  </ModelSettings>
+  <Types>
+    <DomainClass Id="815a5a6d-bd8c-482b-aef1-25f99b4bfbc6" name="FORM_INSTANCE" namespace="KMUH.EduForm.DomainModel.Entities" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="INSTANCE_ID">
+      <Property Id="d240218b-f3b5-44d9-91d8-c1538cbbb695" name="INSTANCE_ID" type="Int32" label="INSTANCE_ID : Int32" kind="Persistent" identity="true" fieldName="_iNSTANCE_ID" />
+      <Property Id="3dca7ed3-43f9-4401-ab1c-fa18995a0217" name="CREATER" label="CREATER : String" kind="Persistent" fieldName="_cREATER" />
+      <Property Id="5dfc2559-8a19-4d0e-b861-a34dc82f2ddf" name="EVALTARGETID" label="EVALTARGETID : String" kind="Persistent" fieldName="_eVALTARGETID" />
+      <Property Id="4639e266-3252-4bb3-8667-7ebe2ab5eeef" name="EXPIREDATE" type="DateTime" label="EXPIREDATE : DateTime" nullable="true" kind="Persistent" fieldName="_eXPIREDATE" />
+      <Property Id="35a51091-12b0-4a73-b8f9-be6050bbeffb" name="INHOSPID" label="INHOSPID : String" kind="Persistent" fieldName="_iNHOSPID" />
+      <Property Id="2250b714-4a25-457a-8760-36a769e8b8c0" name="INSTANCE_ALTER_DATETIME" type="DateTime" label="INSTANCE_ALTER_DATETIME : DateTime" nullable="true" kind="Persistent" fieldName="_iNSTANCE_ALTER_DATETIME" />
+      <Property Id="5a9aa392-605c-47ea-a85b-fe6aaf46a366" name="INSTANCE_CONTENT" label="INSTANCE_CONTENT : String" kind="Persistent" fieldName="_iNSTANCE_CONTENT" />
+      <Property Id="a552f4bc-be11-45d8-b590-1411b38c5518" name="INSTANCE_CREATE_DATETIME" type="DateTime" label="INSTANCE_CREATE_DATETIME : DateTime" kind="Persistent" fieldName="_iNSTANCE_CREATE_DATETIME" />
+      <Property Id="24f66f2b-566f-4cc1-aeb5-9fe64cdc82bd" name="INSTANCE_NAME" label="INSTANCE_NAME : String" kind="Persistent" fieldName="_iNSTANCE_NAME" />
+      <Property Id="91f71940-f61e-4c47-9199-770d84106a9f" name="INSTANCE_REMARK" label="INSTANCE_REMARK : String" kind="Persistent" fieldName="_iNSTANCE_REMARK" />
+      <Property Id="4a37633b-c5e2-4587-aaac-1cc259fd4cbe" name="ISPASS" type="Boolean" label="ISPASS : Boolean" nullable="true" kind="Persistent" fieldName="_iSPASS" />
+      <Property Id="d0df67ec-1d50-45a4-80bf-2d45233a958e" name="PARENT_INSTANCE_ID" type="Int32" label="PARENT_INSTANCE_ID : Int32" nullable="true" kind="Persistent" fieldName="_pARENT_INSTANCE_ID" />
+      <Property Id="9f8eda72-61c0-462b-a09c-727526c63264" name="STATUS" type="Char" label="STATUS : Char" kind="Persistent" fieldName="_sTATUS" />
+      <Property Id="0ba2ec8b-241a-4052-8006-968eab1f2b70" name="TARGETID" label="TARGETID : String" kind="Persistent" fieldName="_tARGETID" />
+      <Property Id="d33b7049-5dbc-4088-b4fb-c2cca8fe8b1a" name="TARGETTYPE" label="TARGETTYPE : String" kind="Persistent" fieldName="_tARGETTYPE" />
+      <Property Id="82d1a910-5992-4642-a59a-cbb3e9c2c93f" name="TEMPLATE_ID" type="Int32" label="TEMPLATE_ID : Int32" kind="Persistent" fieldName="_tEMPLATE_ID" />
+    </DomainClass>
+  </Types>
+  <domainContext>
+    <domainModelHasDomainContext Id="d3343bd8-cd78-489e-89a5-a16c2d45011d">
+      <domainContainer name="EduFormContext" namespace="KMUH.EduForm.DomainModel.Entities" showPropertiesCompartment="true">
+        <entitySetProperty name="FORM_INSTANCEs" namespace="KMUH.EduForm.DomainModel.Entities" type="FORM_INSTANCE" label="FORM_INSTANCEs : IQueryable&lt;KMUH.EduForm.DomainModel.Entities.FORM_INSTANCE&gt;" />
+      </domainContainer>
+    </domainModelHasDomainContext>
+  </domainContext>
+</DomainModel>

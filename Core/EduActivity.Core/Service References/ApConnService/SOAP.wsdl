@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SOAP" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd2" namespace="http://KMUGService/GetDBConnection" />
+      <xsd:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd3" namespace="http://KMUGService/ValidatePWD" />
+      <xsd:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/KMUGService.SystemAPI.StructureClass" />
+      <xsd:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd5" namespace="http://KMUGService/PasswordReset" />
+      <xsd:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd6" namespace="http://KMUGService/PasswordChange" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGetDBConnMethod_GetDBConnectionWithAuto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDBConnectionWithAuto" />
+  </wsdl:message>
+  <wsdl:message name="IGetDBConnMethod_GetDBConnectionWithAuto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDBConnectionWithAutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGetDBConnMethod_GetDBConnectionWithHospCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDBConnectionWithHospCode" />
+  </wsdl:message>
+  <wsdl:message name="IGetDBConnMethod_GetDBConnectionWithHospCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDBConnectionWithHospCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPasswordWithEncryption_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPasswordWithEncryption" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPasswordWithEncryption_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPasswordWithEncryptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPassword" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPasswordLv3_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPasswordLv3" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPasswordLv3_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPasswordLv3Response" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPasswordTMS_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPasswordTMS" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPasswordTMS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPasswordTMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPwd_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPwd" />
+  </wsdl:message>
+  <wsdl:message name="ICheckPwdMethod_CheckPwd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckPwdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModifyPasswordMethod_PasswordReset_InputMessage">
+    <wsdl:part name="parameters" element="tns:PasswordReset" />
+  </wsdl:message>
+  <wsdl:message name="IModifyPasswordMethod_PasswordReset_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PasswordResetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IModifyPasswordMethod_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="IModifyPasswordMethod_ChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGetDBConnMethod">
+    <wsdl:operation name="GetDBConnectionWithAuto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGetDBConnMethod/GetDBConnectionWithAuto" message="tns:IGetDBConnMethod_GetDBConnectionWithAuto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGetDBConnMethod/GetDBConnectionWithAutoResponse" message="tns:IGetDBConnMethod_GetDBConnectionWithAuto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDBConnectionWithHospCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGetDBConnMethod/GetDBConnectionWithHospCode" message="tns:IGetDBConnMethod_GetDBConnectionWithHospCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGetDBConnMethod/GetDBConnectionWithHospCodeResponse" message="tns:IGetDBConnMethod_GetDBConnectionWithHospCode_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICheckPwdMethod">
+    <wsdl:operation name="CheckPasswordWithEncryption">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPasswordWithEncryption" message="tns:ICheckPwdMethod_CheckPasswordWithEncryption_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPasswordWithEncryptionResponse" message="tns:ICheckPwdMethod_CheckPasswordWithEncryption_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPassword" message="tns:ICheckPwdMethod_CheckPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPasswordResponse" message="tns:ICheckPwdMethod_CheckPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckPasswordLv3">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPasswordLv3" message="tns:ICheckPwdMethod_CheckPasswordLv3_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPasswordLv3Response" message="tns:ICheckPwdMethod_CheckPasswordLv3_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckPasswordTMS">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPasswordTMS" message="tns:ICheckPwdMethod_CheckPasswordTMS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPasswordTMSResponse" message="tns:ICheckPwdMethod_CheckPasswordTMS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckPwd">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPwd" message="tns:ICheckPwdMethod_CheckPwd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckPwdMethod/CheckPwdResponse" message="tns:ICheckPwdMethod_CheckPwd_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IModifyPasswordMethod">
+    <wsdl:operation name="PasswordReset">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModifyPasswordMethod/PasswordReset" message="tns:IModifyPasswordMethod_PasswordReset_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModifyPasswordMethod/PasswordResetResponse" message="tns:IModifyPasswordMethod_PasswordReset_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IModifyPasswordMethod/ChangePassword" message="tns:IModifyPasswordMethod_ChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IModifyPasswordMethod/ChangePasswordResponse" message="tns:IModifyPasswordMethod_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetDBConnBinding" type="tns:IGetDBConnMethod">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDBConnectionWithAuto">
+      <soap:operation soapAction="http://tempuri.org/IGetDBConnMethod/GetDBConnectionWithAuto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDBConnectionWithHospCode">
+      <soap:operation soapAction="http://tempuri.org/IGetDBConnMethod/GetDBConnectionWithHospCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CheckPwdBinding" type="tns:ICheckPwdMethod">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckPasswordWithEncryption">
+      <soap:operation soapAction="http://tempuri.org/ICheckPwdMethod/CheckPasswordWithEncryption" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPassword">
+      <soap:operation soapAction="http://tempuri.org/ICheckPwdMethod/CheckPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPasswordLv3">
+      <soap:operation soapAction="http://tempuri.org/ICheckPwdMethod/CheckPasswordLv3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPasswordTMS">
+      <soap:operation soapAction="http://tempuri.org/ICheckPwdMethod/CheckPasswordTMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPwd">
+      <soap:operation soapAction="http://tempuri.org/ICheckPwdMethod/CheckPwd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ModifyPwdBinding" type="tns:IModifyPasswordMethod">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PasswordReset">
+      <soap:operation soapAction="http://tempuri.org/IModifyPasswordMethod/PasswordReset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://tempuri.org/IModifyPasswordMethod/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SOAP">
+    <wsdl:port name="GetDBConnBinding" binding="tns:GetDBConnBinding">
+      <soap:address location="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc/GetDBConn" />
+    </wsdl:port>
+    <wsdl:port name="CheckPwdBinding" binding="tns:CheckPwdBinding">
+      <soap:address location="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc/CheckPwd" />
+    </wsdl:port>
+    <wsdl:port name="ModifyPwdBinding" binding="tns:ModifyPwdBinding">
+      <soap:address location="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc/ModifyPwd" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

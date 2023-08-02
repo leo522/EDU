@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityDiagrams>
+  <entityDiagramsDiagram dslVersion="2.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="EduFormDiagrams" fillColor="62, 62, 65" isDefault="true">
+    <DomainModelMoniker name="/EduFormContext" />
+    <nestedChildShapes>
+      <classShape Id="4a40c696-f1a4-4d78-823e-6a18fb26d9e9" absoluteBounds="0.875, 0.75, 2.25, 4.301091715494791">
+        <DomainClassMoniker name="/EduFormContext/FORM_INSTANCE" />
+        <nestedChildShapes>
+          <elementListCompartment Id="f14c8a28-b90a-47d7-b50a-695511103778" absoluteBounds="0.89000000000000012, 1.26, 2.2199999999999998, 3.194834391276042" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+          <elementListCompartment Id="e507a651-201c-4718-9f2d-4f72efb578a3" absoluteBounds="0.89000000000000012, 4.4648343912760415, 2.2199999999999998, 0.238128662109375" name="ImplementationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+          <elementListCompartment Id="e1129235-4dd2-411d-a7a1-3bd880be3108" absoluteBounds="0.89000000000000012, 4.7129630533854163, 2.2199999999999998, 0.238128662109375" name="NavigationCompartment" titleTextColor="Black" itemTextColor="Black" />
+        </nestedChildShapes>
+      </classShape>
+    </nestedChildShapes>
+  </entityDiagramsDiagram>
+</EntityDiagrams>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/KMUGService.SystemAPI.StructureClass" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KMUGService.SystemAPI.StructureClass" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="EnumCol.ReturnAuthPasswordLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AuthFail" />
+      <xs:enumeration value="LV1" />
+      <xs:enumeration value="LV2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumCol.ReturnAuthPasswordLevel" nillable="true" type="tns:EnumCol.ReturnAuthPasswordLevel" />
+  <xs:simpleType name="EnumCol.EnumResetPasswordType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DefaultReset" />
+      <xs:enumeration value="EmailRule" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumCol.EnumResetPasswordType" nillable="true" type="tns:EnumCol.EnumResetPasswordType" />
+  <xs:simpleType name="EnumCol.EnumEncryptType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MD5" />
+      <xs:enumeration value="SHA1" />
+      <xs:enumeration value="SHA256" />
+      <xs:enumeration value="SHA512" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumCol.EnumEncryptType" nillable="true" type="tns:EnumCol.EnumEncryptType" />
+</xs:schema>

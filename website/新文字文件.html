@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>伸縮導航</title>
+<style type="text/css">
+body{background:#000}
+div,h2{padding:0px;margin:0}
+.title{width:180px;background:#ccc;height:20px;line-height: 20px; font-size:12px;text-align:center;}
+.off {background:#777;color:#fff}
+.content{width:170px;height:300px;font-size:12px;background:#fff;padding:5px;}
+</style>
+<script type='text/javascript' src="scripts/jquery-1.4.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".title").click(function(){$(".content").slideToggle("slow");$(this).toggleClass("off")});
+});
+</script>
+</head>
+<body>
+ 
+ 
+<h2 class="title">我是一個可點擊標題</h2>
+<div class="content">
+通過高度變化來切換所有匹配元素的可見性，並在切換完成後可選地觸發一個回調函數。
+這個動畫效果只調整元素的高度，可以使匹配的元素以「滑動」的方式隱藏或顯示。<br />
+<strong>返回值:</strong>jQuery<br />
+<strong>參數:</strong><br />
+speed (String,Number) : 三種預定速度之一的字元串("slow", "normal", or "fast")或表示動畫時長的毫秒數值(如：1000)
+callback (Function) : (可選) 在動畫完成時執行的函數
+</div>
+</body>
+</html>

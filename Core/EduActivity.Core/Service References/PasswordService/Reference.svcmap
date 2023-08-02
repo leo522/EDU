@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f68c98a3-dd82-40e1-a4b7-19c35a4c9315" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PasswordServiceWCFService.wsdl" MetadataType="Wsdl" ID="4a9beff9-11b5-4410-862e-180649f2787d" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?wsdl" />
+    <MetadataFile FileName="PasswordServiceWCFService.xsd" MetadataType="Schema" ID="5aaba7b0-97df-457f-b2e4-06bb48f2092a" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?xsd=xsd7" />
+    <MetadataFile FileName="PasswordServiceWCFService1.xsd" MetadataType="Schema" ID="e4208d81-f779-4fef-b22b-f1ece8888d32" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PasswordServiceWCFService2.xsd" MetadataType="Schema" ID="959504c8-1e6b-4e75-af4b-386e87b6312d" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?xsd=xsd8" />
+    <MetadataFile FileName="PasswordServiceWCFService3.xsd" MetadataType="Schema" ID="5a54d08b-3dc3-486b-ab51-3edb6d95a350" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?xsd=xsd6" />
+    <MetadataFile FileName="PasswordServiceWCFService4.xsd" MetadataType="Schema" ID="3477c1ed-0c80-4d69-8311-22f34fb30a92" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PasswordServiceWCFService.disco" MetadataType="Disco" ID="394930d3-bcb6-4d28-9a01-d8baeb42a130" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?disco" />
+    <MetadataFile FileName="PasswordServiceWCFService5.xsd" MetadataType="Schema" ID="0afa989d-115f-4c37-a572-7d1109d216d6" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PasswordServiceWCFService6.xsd" MetadataType="Schema" ID="d5c6406d-0002-4e3d-9826-614d5a43e7fc" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?xsd=xsd4" />
+    <MetadataFile FileName="PasswordServiceWCFService7.xsd" MetadataType="Schema" ID="b82c37b6-6cee-4c8e-b0e2-af156e265833" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PasswordServiceWCFService8.xsd" MetadataType="Schema" ID="cfbc80a2-d772-40c6-bb28-7effc6e39744" SourceId="1" SourceUrl="http://intraap.server.kmuh.org.tw/WEB/PasswordService/PasswordServiceWCFService.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{353A1882-60E5-4CC9-B331-FA213290DEAC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EduActivity.Report</RootNamespace>
+    <AssemblyName>EduActivity.Report</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=7.2.13.1016, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EduPassportReport_sub2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EduPassportReport_sub2.Designer.cs">
+      <DependentUpon>EduPassportReport_sub2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EduPassportReport_sub1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EduPassportReport_sub1.Designer.cs">
+      <DependentUpon>EduPassportReport_sub1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStatisticReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormStatisticReport.Designer.cs">
+      <DependentUpon>FormStatisticReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EduPassportReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EduPassportReport.Designer.cs">
+      <DependentUpon>EduPassportReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InternCourseReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InternCourseReport.Designer.cs">
+      <DependentUpon>InternCourseReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EduPassportReport_sub2.resx">
+      <DependentUpon>EduPassportReport_sub2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EduPassportReport_sub1.resx">
+      <DependentUpon>EduPassportReport_sub1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatisticReport.resx">
+      <DependentUpon>FormStatisticReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EduPassportReport.resx">
+      <DependentUpon>EduPassportReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InternCourseReport.resx">
+      <DependentUpon>InternCourseReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\EduActivity.Core\EduActivity.Core.csproj">
+      <Project>{4CD7C04B-D47B-45F7-A7C5-9BDD05A08AC8}</Project>
+      <Name>EduActivity.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="未命名.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

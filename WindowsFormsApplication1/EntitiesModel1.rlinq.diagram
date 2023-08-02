@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityDiagrams>
+  <entityDiagramsDiagram dslVersion="2.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="EntitiesModel1" isDefault="true">
+    <DomainModelMoniker name="/EntitiesModel1" />
+    <nestedChildShapes>
+      <classShape Id="ce5f7454-f9a8-4d83-b691-dda10987c626" absoluteBounds="0.75, 0.75, 1.5, 4.6472932942708312">
+        <DomainClassMoniker name="/EntitiesModel1/PassPortStudentApplicationItem" />
+        <nestedChildShapes>
+          <elementListCompartment Id="5fa925e2-df69-47cd-8965-1e5d93cfe252" absoluteBounds="0.765, 1.2599999999999998, 1.4700000000000002, 3.518513997395833" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+          <elementListCompartment Id="7f1f5b3a-cc09-423e-91a5-c21c5101ea3c" absoluteBounds="0.765, 4.7885139973958326, 1.4700000000000002, 0.2493896484375" name="ImplementationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+          <elementListCompartment Id="81f09a83-0d09-4fda-84eb-bb3103385d4c" absoluteBounds="0.765, 5.0479036458333324, 1.4700000000000002, 0.2493896484375" name="NavigationCompartment" titleTextColor="Black" itemTextColor="Black" />
+        </nestedChildShapes>
+      </classShape>
+    </nestedChildShapes>
+  </entityDiagramsDiagram>
+</EntityDiagrams>

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="EntitiesModel1" namespace="WindowsFormsApplication1" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+  <orm:orm name="EntitiesModel1" backend="mssql" default-schema="dbo" xmlns:orm="http://tempuri.org/ORM">
+    <orm:namespace name="WindowsFormsApplication1" default="true">
+      <orm:class name="PassPortStudentApplicationItem" uniqueId="fbf6d0c8-a1c1-4d5c-b9e1-b5c882dd2bcc">
+        <orm:table name="PassPortStudentApplicationItem" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="ApplicationID" />
+          </orm:key-generator>
+          <orm:single-field field-name="_applicationID" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_applicationID" property="ApplicationID" behavior="readwrite" uniqueId="8f1377c3-adff-4df1-b982-60d4164df08f" type="System.Int32">
+          <orm:column name="applicationID" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_itemCode" property="ItemCode" behavior="readwrite" uniqueId="6e54c559-6b61-426c-b010-8d6ef801e414" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="itemCode" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_applicationMemberNumber" property="ApplicationMemberNumber" behavior="readwrite" uniqueId="4d0089f8-f184-4188-9524-958c6eab1026" type="System.String">
+          <orm:column name="applicationMemberNumber" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_checkOrder" property="CheckOrder" behavior="readwrite" uniqueId="51d74a51-1bed-4046-8572-a5df5c593cf7" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="checkOrder" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_designationTeacherNumber" property="DesignationTeacherNumber" behavior="readwrite" uniqueId="15265b1c-c533-463d-90b3-ddb2870ed41f" type="System.String">
+          <orm:column name="designationTeacherNumber" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_implementPlace" property="ImplementPlace" behavior="readwrite" uniqueId="3e656008-3aed-4e88-b6d3-86cf0e7085e3" type="System.String">
+          <orm:column name="implementPlace" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_implementDate" property="ImplementDate" behavior="readwrite" uniqueId="b1462b2f-d679-4d72-8003-46e8933ffa41" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="implementDate" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="_applicationDate" property="ApplicationDate" behavior="readwrite" uniqueId="172408d9-ab4b-4ac7-87de-614dae1612f6" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="applicationDate" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="_isFinalCheck" property="IsFinalCheck" behavior="readwrite" uniqueId="67692fef-eb3f-4db1-ab46-26b835b8793d" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="isFinalCheck" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_checkResult" property="CheckResult" behavior="readwrite" uniqueId="196600b9-fde1-428f-bacc-28730b64db30" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="checkResult" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_checkStatus" property="CheckStatus" behavior="readwrite" uniqueId="cfa347d7-6454-4453-804f-a6ab56df9e45" type="System.String">
+          <orm:column name="checkStatus" sql-type="nvarchar" nullable="true" length="5" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_checkDate" property="CheckDate" behavior="readwrite" uniqueId="cd9b29e9-fb60-48b3-9831-8a36a9592b3c" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="checkDate" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="_studentRemark" property="StudentRemark" behavior="readwrite" uniqueId="d7a011c1-e115-4948-a656-f498ebd7f264" type="System.String">
+          <orm:column name="studentRemark" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_implementObject" property="ImplementObject" behavior="readwrite" uniqueId="fc017d5d-acba-4c54-9973-adaa3262e34a" type="System.String">
+          <orm:column name="implementObject" sql-type="nvarchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_caseHistoryNumber" property="CaseHistoryNumber" behavior="readwrite" uniqueId="78116738-6a77-4c72-bf5a-b3cb9adfb400" type="System.String">
+          <orm:column name="caseHistoryNumber" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_teacherRemark" property="TeacherRemark" behavior="readwrite" uniqueId="caf5deec-b2db-408e-9701-5e09c8ec22ed" type="System.String">
+          <orm:column name="teacherRemark" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_jobCode" property="JobCode" behavior="readwrite" uniqueId="01616356-a9ce-4034-8360-1e4ed198d5fb" type="System.String">
+          <orm:column name="JobCode" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+      </orm:class>
+    </orm:namespace>
+    <orm:schema schema="">
+      <orm:table name="PassPortStudentApplicationItem">
+        <orm:column name="applicationID" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="itemCode" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="applicationMemberNumber" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="checkOrder" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="designationTeacherNumber" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="implementPlace" sql-type="nvarchar" nullable="true" length="20" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="implementDate" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="applicationDate" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="isFinalCheck" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="checkResult" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="checkStatus" sql-type="nvarchar" nullable="true" length="5" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="checkDate" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="studentRemark" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="implementObject" sql-type="nvarchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="caseHistoryNumber" sql-type="nvarchar" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="teacherRemark" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="JobCode" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+      </orm:table>
+    </orm:schema>
+    <orm:relational-naming-settings>
+      <orm:source-strategy>Property</orm:source-strategy>
+      <orm:remove-camel-case>False</orm:remove-camel-case>
+    </orm:relational-naming-settings>
+  </orm:orm>
+  <ModelSettings xmlns="">
+    <AppConfigConnectionPropertyName>Www_EduActivityConnection</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>Data Source=172.18.6.25;Initial Catalog=www_EduActivity;Integrated Security=False;User ID=www_eduactivity_user;Password=eduact*user</AppConfigConnectionString>
+    <InitialCatalog>www_EduActivity</InitialCatalog>
+    <NamingSettings>
+      <ClassRules>
+        <CaseMode>PascalCase</CaseMode>
+        <PluralizationMode>Singularize</PluralizationMode>
+      </ClassRules>
+      <FieldRules>
+        <AddPrefix>_</AddPrefix>
+        <CaseMode>CamelCase</CaseMode>
+      </FieldRules>
+      <PropertyRules>
+        <CaseMode>PascalCase</CaseMode>
+      </PropertyRules>
+      <NavigationPropertyRules />
+    </NamingSettings>
+    <CodeGenerationSettings>
+      <MappingDefinitionType>Xml</MappingDefinitionType>
+    </CodeGenerationSettings>
+    <SchemaUpdateSettings />
+    <BackendConfigurationSettings>
+      <BackendConfiguration>
+        <Backend>MsSql</Backend>
+        <ProviderName>System.Data.SqlClient</ProviderName>
+      </BackendConfiguration>
+    </BackendConfigurationSettings>
+  </ModelSettings>
+  <Types>
+    <DomainClass Id="fbf6d0c8-a1c1-4d5c-b9e1-b5c882dd2bcc" name="PassPortStudentApplicationItem" namespace="WindowsFormsApplication1" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="ApplicationID">
+      <Property Id="8f1377c3-adff-4df1-b982-60d4164df08f" name="ApplicationID" type="Int32" label="ApplicationID : Int32" kind="Persistent" identity="true" fieldName="_applicationID" />
+      <Property Id="172408d9-ab4b-4ac7-87de-614dae1612f6" name="ApplicationDate" type="DateTime" label="ApplicationDate : DateTime" nullable="true" kind="Persistent" fieldName="_applicationDate" />
+      <Property Id="4d0089f8-f184-4188-9524-958c6eab1026" name="ApplicationMemberNumber" label="ApplicationMemberNumber : String" kind="Persistent" fieldName="_applicationMemberNumber" />
+      <Property Id="78116738-6a77-4c72-bf5a-b3cb9adfb400" name="CaseHistoryNumber" label="CaseHistoryNumber : String" kind="Persistent" fieldName="_caseHistoryNumber" />
+      <Property Id="cd9b29e9-fb60-48b3-9831-8a36a9592b3c" name="CheckDate" type="DateTime" label="CheckDate : DateTime" nullable="true" kind="Persistent" fieldName="_checkDate" />
+      <Property Id="51d74a51-1bed-4046-8572-a5df5c593cf7" name="CheckOrder" type="Int32" label="CheckOrder : Int32" nullable="true" kind="Persistent" fieldName="_checkOrder" />
+      <Property Id="196600b9-fde1-428f-bacc-28730b64db30" name="CheckResult" type="Boolean" label="CheckResult : Boolean" nullable="true" kind="Persistent" fieldName="_checkResult" />
+      <Property Id="cfa347d7-6454-4453-804f-a6ab56df9e45" name="CheckStatus" label="CheckStatus : String" kind="Persistent" fieldName="_checkStatus" />
+      <Property Id="15265b1c-c533-463d-90b3-ddb2870ed41f" name="DesignationTeacherNumber" label="DesignationTeacherNumber : String" kind="Persistent" fieldName="_designationTeacherNumber" />
+      <Property Id="b1462b2f-d679-4d72-8003-46e8933ffa41" name="ImplementDate" type="DateTime" label="ImplementDate : DateTime" nullable="true" kind="Persistent" fieldName="_implementDate" />
+      <Property Id="fc017d5d-acba-4c54-9973-adaa3262e34a" name="ImplementObject" label="ImplementObject : String" kind="Persistent" fieldName="_implementObject" />
+      <Property Id="3e656008-3aed-4e88-b6d3-86cf0e7085e3" name="ImplementPlace" label="ImplementPlace : String" kind="Persistent" fieldName="_implementPlace" />
+      <Property Id="67692fef-eb3f-4db1-ab46-26b835b8793d" name="IsFinalCheck" type="Boolean" label="IsFinalCheck : Boolean" nullable="true" kind="Persistent" fieldName="_isFinalCheck" />
+      <Property Id="6e54c559-6b61-426c-b010-8d6ef801e414" name="ItemCode" type="Int32" label="ItemCode : Int32" nullable="true" kind="Persistent" fieldName="_itemCode" />
+      <Property Id="01616356-a9ce-4034-8360-1e4ed198d5fb" name="JobCode" label="JobCode : String" kind="Persistent" fieldName="_jobCode" />
+      <Property Id="d7a011c1-e115-4948-a656-f498ebd7f264" name="StudentRemark" label="StudentRemark : String" kind="Persistent" fieldName="_studentRemark" />
+      <Property Id="caf5deec-b2db-408e-9701-5e09c8ec22ed" name="TeacherRemark" label="TeacherRemark : String" kind="Persistent" fieldName="_teacherRemark" />
+    </DomainClass>
+  </Types>
+  <domainContext>
+    <domainModelHasDomainContext Id="00047710-b55b-432f-996c-bff07c0f51ad">
+      <domainContainer name="EntitiesModel1" namespace="WindowsFormsApplication1" showPropertiesCompartment="true">
+        <entitySetProperty name="PassPortStudentApplicationItems" namespace="WindowsFormsApplication1" type="PassPortStudentApplicationItem" label="PassPortStudentApplicationItems : IQueryable&lt;WindowsFormsApplication1.PassPortStudentApplicationItem&gt;" />
+      </domainContainer>
+    </domainModelHasDomainContext>
+  </domainContext>
+</DomainModel>

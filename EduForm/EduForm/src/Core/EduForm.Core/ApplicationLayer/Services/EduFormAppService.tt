@@ -1,0 +1,23 @@
+﻿<#@ import namespace="System.Runtime.Remoting.Messaging" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="%AppSmartT4%\T4Utility.ttinclude" #>
+
+<#
+	var setting = new AppTemplateSetting();
+	setting.ClassName = "EduFormAppService";
+	setting.ProjectName = "EduForm";
+//	setting.WindowsFormsProject = @"..\..\..\..\Presentation\EduForm.UI.Windows\EduForm.UI.Windows.csproj";
+	setting.WCFProject = @"..\..\..\..\Services\EduForm.Services\EduForm.Services.csproj";
+	setting.UnitTestProject = @"..\..\..\..\Tests\EduForm.UnitTests\EduForm.UnitTests.csproj";
+	setting.CoreProject = @"..\..\EduForm.Core.csproj";
+    setting.GenerateListControlExtensions = true;
+	setting.GenerateBindingSourceExtensions = true;
+	setting.GenerateCodeRefWCFService = true;
+	setting.WCFInstancing = "PerCall";
+	setting.WCFConcurrency = "Single";
+	ProcessAppTemplate(setting);
+	ProcessNormalAppTemplate(setting);
+	AddCoreProjectReference();
+	
+	Host.SetFileExtension(".log");
+#>

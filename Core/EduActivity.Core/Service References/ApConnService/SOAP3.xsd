@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://KMUGService/ValidatePWD" elementFormDefault="qualified" targetNamespace="http://KMUGService/ValidatePWD" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://mr.server.kmuh.org.tw/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/KMUGService.SystemAPI.StructureClass" />
+  <xs:complexType name="ValidatePWDReturnCollect">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckResult" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ValidateDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AuthMessage" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/KMUGService.SystemAPI.StructureClass" minOccurs="0" name="AuthLevel" type="q1:EnumCol.ReturnAuthPasswordLevel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValidatePWDReturnCollect" nillable="true" type="tns:ValidatePWDReturnCollect" />
+</xs:schema>

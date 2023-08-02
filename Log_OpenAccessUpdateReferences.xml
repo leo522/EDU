@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="_ConvertModelWizard_Files\UpgradeReferences.xslt"?>
+<UpgradeLog>
+  <Events>
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\EduActivity.Core.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\EduActivity.Core.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\EduActivity.Core.csproj" Message="Import Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\App.Config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\App.Config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\App.Config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\App.Config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\App.Config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\App.Config" Message="App.Config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\Resources\Messages.resx" Message="Messages.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\EduActivity.Core.csproj" Message="EduActivity.Core" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\EduActivity.Services.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\EduActivity.Services.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\EduActivity.Services.csproj" Message="Import Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Resources\Messages.resx" Message="Messages.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.config" Message="Web.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Debug.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Debug.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Debug.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Debug.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Debug.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Debug.config" Message="Web.Debug.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Release.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Release.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Release.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Release.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Release.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\Web.Release.config" Message="Web.Release.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Services\EduActivity.Services\EduActivity.Services.csproj" Message="EduActivity.Services" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivity.Report\EduActivity.Report.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivity.Report\EduActivity.Report.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivity.Report\EduActivity.Report.csproj" Message="Import Directives" />
+    <Event EventType="Error" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivity.Report\FormStatisticReport.resx" Message="FormStatisticReport.resx" />
+    <Event EventType="Error" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivity.Report\InternCourseReport.resx" Message="InternCourseReport.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivity.Report\EduActivity.Report.csproj" Message="EduActivity.Report" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\EduActivityExpireChecker.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\EduActivityExpireChecker.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\EduActivityExpireChecker.csproj" Message="Import Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\app.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\app.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\app.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\app.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\app.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\app.config" Message="app.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\Form1.resx" Message="Form1.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\Properties\Resources.resx" Message="Resources.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\EduActivityExpireChecker\EduActivityExpireChecker.csproj" Message="EduActivityExpireChecker" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\EduActivityAutoSendForm.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\EduActivityAutoSendForm.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\EduActivityAutoSendForm.csproj" Message="Import Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\app.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\app.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\app.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\app.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\app.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\app.config" Message="app.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\Form1.resx" Message="Form1.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\Properties\Resources.resx" Message="Resources.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivityAutoSendForm\EduActivityAutoSendForm.csproj" Message="EduActivityAutoSendForm" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\About.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\About.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\About.aspx" Message="About.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\ChangePassword.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\ChangePassword.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\ChangePassword.aspx" Message="ChangePassword.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\ChangePasswordSuccess.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\ChangePasswordSuccess.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\ChangePasswordSuccess.aspx" Message="ChangePasswordSuccess.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Login.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Login.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Login.aspx" Message="Login.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Register.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Register.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Register.aspx" Message="Register.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Web.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Web.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Web.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Web.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Web.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Account\Web.config" Message="Web.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\AutoEduForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\AutoEduForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\AutoEduForm.aspx" Message="AutoEduForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\AutoEduFormSetting.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\AutoEduFormSetting.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\AutoEduFormSetting.aspx" Message="AutoEduFormSetting.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\AvatarEdit.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\AvatarEdit.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\AvatarEdit.aspx" Message="AvatarEdit.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\" Message="Binary References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.exe.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.exe.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.exe.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.exe.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.exe.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.exe.config" Message="EduActivityAutoSendForm.exe.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.vshost.exe.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.vshost.exe.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.vshost.exe.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.vshost.exe.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.vshost.exe.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\EduActivityAutoSendForm.vshost.exe.config" Message="EduActivityAutoSendForm.vshost.exe.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Default.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Default.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Default.aspx" Message="Default.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\DepartmentQuery.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\DepartmentQuery.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\DepartmentQuery.aspx" Message="DepartmentQuery.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Detial.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Detial.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Detial.aspx" Message="Detial.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduFormPreview.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduFormPreview.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduFormPreview.aspx" Message="EduFormPreview.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduFormSendLog.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduFormSendLog.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduFormSendLog.aspx" Message="EduFormSendLog.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduFormSetting.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduFormSetting.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduFormSetting.aspx" Message="EduFormSetting.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduMemberTeacherSetting.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduMemberTeacherSetting.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduMemberTeacherSetting.aspx" Message="EduMemberTeacherSetting.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduNewsEdit.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduNewsEdit.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduNewsEdit.aspx" Message="EduNewsEdit.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduNewsShow.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduNewsShow.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduNewsShow.aspx" Message="EduNewsShow.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduNewsView.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduNewsView.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduNewsView.aspx" Message="EduNewsView.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStatistic.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStatistic.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStatistic.aspx" Message="EduStatistic.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStatisticView.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStatisticView.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStatisticView.aspx" Message="EduStatisticView.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleAdd.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleAdd.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleAdd.aspx" Message="EduStopActScheduleAdd.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleCalendar.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleCalendar.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleCalendar.aspx" Message="EduStopActScheduleCalendar.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleDoc.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleDoc.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleDoc.aspx" Message="EduStopActScheduleDoc.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleTarget.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleTarget.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleTarget.aspx" Message="EduStopActScheduleTarget.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleView.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleView.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduStopActScheduleView.aspx" Message="EduStopActScheduleView.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTeam.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTeam.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTeam.aspx" Message="EduTeam.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTeamMemberRundown.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTeamMemberRundown.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTeamMemberRundown.aspx" Message="EduTeamMemberRundown.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTeamQuery.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTeamQuery.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTeamQuery.aspx" Message="EduTeamQuery.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTerm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTerm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTerm.aspx" Message="EduTerm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermCorchSetting.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermCorchSetting.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermCorchSetting.aspx" Message="EduTermCorchSetting.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermEdit.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermEdit.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermEdit.aspx" Message="EduTermEdit.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermRun.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermRun.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermRun.aspx" Message="EduTermRun.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermRundown.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermRundown.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermRundown.aspx" Message="EduTermRundown.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermTeacherSetting.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermTeacherSetting.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\EduTermTeacherSetting.aspx" Message="EduTermTeacherSetting.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Empty.master" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Empty.master" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Empty.master" Message="Empty.master" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\FormCompleteDetail.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\FormCompleteDetail.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\FormCompleteDetail.aspx" Message="FormCompleteDetail.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\EditHtmlForm.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\EditHtmlForm.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\EditHtmlForm.aspx" Message="EditHtmlForm.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\EditLibrary.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\EditLibrary.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\EditLibrary.aspx" Message="EditLibrary.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\EditLibraryOption.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\EditLibraryOption.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\EditLibraryOption.aspx" Message="EditLibraryOption.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\HtmlAgilityAdmin.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\HtmlAgilityAdmin.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\HtmlAgilityAdmin.aspx" Message="HtmlAgilityAdmin.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\HtmlFormStatistic.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\HtmlFormStatistic.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\HtmlFormStatistic.aspx" Message="HtmlFormStatistic.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\Uploader.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\Uploader.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\HtmlForm\Uploader.aspx" Message="Uploader.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\index.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\index.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\index.aspx" Message="index.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\InstanceAttachment.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\InstanceAttachment.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\InstanceAttachment.aspx" Message="InstanceAttachment.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\InstanceDetial.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\InstanceDetial.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\InstanceDetial.aspx" Message="InstanceDetial.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\JobCodeQuery.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\JobCodeQuery.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\JobCodeQuery.aspx" Message="JobCodeQuery.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\JobFormEdit.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\JobFormEdit.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\JobFormEdit.aspx" Message="JobFormEdit.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\JobFormSetting.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\JobFormSetting.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\JobFormSetting.aspx" Message="JobFormSetting.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Member.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Member.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Member.aspx" Message="Member.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\OpenCourse.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\OpenCourse.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\OpenCourse.aspx" Message="OpenCourse.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\ReportManage.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\ReportManage.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\ReportManage.aspx" Message="ReportManage.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Site.master" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Site.master" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Site.master" Message="Site.master" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\TeacherSetting.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\TeacherSetting.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\TeacherSetting.aspx" Message="TeacherSetting.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\test.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\test.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\test.aspx" Message="test.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\ToDoList.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\ToDoList.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\ToDoList.aspx" Message="ToDoList.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\TreeViewComboBox.ascx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\TreeViewComboBox.ascx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\TreeViewComboBox.ascx" Message="TreeViewComboBox.ascx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\UserInfo.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\UserInfo.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\UserInfo.aspx" Message="UserInfo.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\VsSelector.ascx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\VsSelector.ascx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\VsSelector.ascx" Message="VsSelector.ascx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Web.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Web.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Web.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Web.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Web.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Web.config" Message="Web.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\複製 - ToDoList.aspx" Message="Register Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\複製 - ToDoList.aspx" Message="Assembly Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\複製 - ToDoList.aspx" Message="複製 - ToDoList.aspx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="http:\localhost" Message="...\localhost\" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HTMLFormConverter\HTMLFormConverter.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HTMLFormConverter\HTMLFormConverter.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HTMLFormConverter\HTMLFormConverter.csproj" Message="Import Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HTMLFormConverter\HtmlConverterForm.resx" Message="HtmlConverterForm.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HTMLFormConverter\Properties\Resources.resx" Message="Resources.resx" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HTMLFormConverter\HTMLFormConverter.csproj" Message="HTMLFormConverter" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\HtmlFormUtility.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\HtmlFormUtility.csproj" Message="Project References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\HtmlFormUtility.csproj" Message="Import Directives" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\app.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\app.config" Message="Http Handlers" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\app.config" Message="Handlers (IIS7+)" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\app.config" Message="Config Sections" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\app.config" Message="Render Extensions" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\app.config" Message="app.config" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\HtmlFormUtility\HtmlFormUtility.csproj" Message="HtmlFormUtility" />
+    <Event EventType="Success" Action="Analyze" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivity.sln" Message="EduActivity" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\EduActivity.Core.csproj" Message="Assembly References" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\Core\EduActivity.Core\EduActivity.Core.csproj" Message="EduActivity.Core" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Bin\" Message="Binary References" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Web.config" Message="Assembly References" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\website\Web.config" Message="Web.config" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="http:\localhost" Message="...\localhost\" />
+    <Event EventType="Success" Action="Upgrade" SourceItem="H:\work\KMUH\adm\1020640\EduActivity\src\EduActivity.sln" Message="EduActivity" />
+  </Events>
+</UpgradeLog>

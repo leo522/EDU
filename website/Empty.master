@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Empty.master.cs" Inherits="Empty" %>
+
+<%@ Register assembly="Telerik.Web.UI" namespace="Telerik.Web.UI" tagprefix="telerik" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Empty.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+            <telerik:RadScriptManager ID="RadScriptManager1" Runat="server">
+            </telerik:RadScriptManager>
+    <div>
+
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+    </div>
+    </form>
+</body>
+</html>

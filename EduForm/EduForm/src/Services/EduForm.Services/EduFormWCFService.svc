@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="KMUH.EduForm.Services.EduFormWCFService" CodeBehind="EduFormWCFService.svc.cs" %>
+

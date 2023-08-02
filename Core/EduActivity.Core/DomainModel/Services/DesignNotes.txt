@@ -1,0 +1,90 @@
+
+
+ABOUT Domain Services
+
+1. Do not confuse with Application Services
+
+2. Defining characteristics:
+    2.1 Actions that do not fit within an entity or aggregate
+    2.2 Stateless
+
+3. Examples:
+    Transfers
+    Calculators
+
+
+Example 3.1
+
+/// <summary>
+/// Bank transfer domain service base contract
+/// </summary>
+public interface IBankTransferService
+{
+    /// <summary>
+    /// Perform a new transferLog into two bank accounts
+    /// </summary>
+    /// <param name="amount">The bank transferLog amount</param>
+    /// <param name="originAccount">The originAccount bank account</param>
+    /// <param name="destinationAccount">The destinationAccount bank account</param>
+    void PerformTransfer(decimal amount, BankAccount originAccount, BankAccount destinationAccount);
+}
+
+public class BankTransferService : IBankTransferService
+{
+    
+    public void PerformTransfer(decimal amount, BankAccount originAccount, BankAccount destinationAccount)
+    {
+        if (originAccount != null && destinationAccount != null)
+        {
+            if (originAccount.BankAccountNumber == destinationAccount.BankAccountNumber) // if transfer in same bank account
+                throw new InvalidOperationException(Messages.exception_CannotTransferMoneyWhenFromIsTheSameAsTo);
+
+            // Check if customer has required credit and if the BankAccount is not locked
+            if (originAccount.CanBeWithdrawed(amount))
+            {
+                //Domain Logic
+                //Process: Perform transfer operations to in-memory Domain-Model objects        
+                // 1.- Charge money to origin acc
+                // 2.- Credit money to destination acc
+
+                //Charge money
+                originAccount.WithdrawMoney(amount, string.Format(Messages.messages_TransactionFromMessage, destinationAccount.Id));
+
+                //Credit money
+                destinationAccount.DepositMoney(amount, string.Format(Messages.messages_TransactionToMessage, originAccount.Id));
+            }
+            else
+                throw new InvalidOperationException(Messages.exception_BankAccountCannotWithdraw);
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+Example 3.2
+
+public class SimpleDomainService : ISimpleDomainService
+{
+    readonly ICustomerRepository _customerRepository;
+ 
+    public SimpleDomainService(ICustomerRepository customerRepository)
+    {
+        if (customerRepository == null)
+            throw new ArgumentNullException("customerRepository");
+ 
+        _customerRepository = customerRepository;
+    }
+ 
+ 
+ 
+    public void Calc(CustomerDto customer)
+    {
+        //(CDLTLL - Repository Test)
+        var associatedCustomer = _customerRepository.Get(customer.customerId);
+
+        //(Other Domain-Logic)...
+    }
+}
+
+

@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
+using KMUH.EduForm.ApplicationLayer.DTO;
+using KMUH.EduForm.ApplicationLayer.Services;
+using KMUH.EduForm.DomainModel.Entities;
+
+
+namespace KMUH.EduForm.Services
+{
+	[TestFixture]
+	public partial class EduFormAppServiceTest
+	{
+		private IEduFormAppService service = new EduFormAppService();		
+
+		[Test]
+		[Ignore()]
+		public  void PingTest()
+		{
+			Assert.IsTrue(true);
+		}
+
+	}
+}
+
+

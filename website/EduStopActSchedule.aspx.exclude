@@ -1,0 +1,741 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="EduStopActSchedule.aspx.cs" Inherits="EduStopActSchedule" %>
+<%@ Register assembly="Telerik.Web.UI" namespace="Telerik.Web.UI" tagprefix="telerik" %>
+<%@ Register src="TreeViewComboBox.ascx" tagname="TreeViewComboBox" tagprefix="uc1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+    <script type="text/javascript">
+    function GetRadWindow() {
+        var oWindow = null;
+        if (window.radWindow) oWindow = window.radWindow;
+        else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
+        return oWindow;
+    }
+
+    function CloseWindow(bool) {
+        var oArg = new Object();
+        oArg.NeedRefresh = bool;
+        var oWnd = GetRadWindow();
+        oWnd.close(oArg);
+    }
+
+    function openForm() {
+        var dock = $find("<%= RadDock1.ClientID %>");
+        // Center the RadDock on the screen
+        var viewPort = $telerik.getViewPortSize();
+        var xPos = Math.round((viewPort.width - parseInt(dock.get_width())) / 2);
+        var yPos = Math.round((viewPort.height - parseInt(dock.get_height())) / 2);
+        $telerik.setLocation(dock.get_element(), { x: xPos, y: yPos });
+
+        dock.set_closed(false);
+
+        var descriptionTextBox = $get('<%= tbName.ClientID %>');
+        //descriptionTextBox.focus();
+
+        Sys.Application.remove_load(openForm);
+    }
+
+    function hideForm() {
+        var dock = $find("<%= RadDock1.ClientID %>");
+        dock.set_closed(true);
+
+        return true;
+    }
+
+</script>
+
+<div>
+
+
+
+<asp:Panel ID="CoursePanel" runat="server" GroupingText="課程">
+<table width="100%">
+<tr>
+<td>
+    <asp:Label ID="Label9" runat="server" Text="課程代碼："></asp:Label>
+    <asp:Label ID="lblEduStopCode" runat="server"></asp:Label>
+    </td>
+<td>
+    <asp:Label ID="Label10" runat="server" Text="名稱："></asp:Label>
+    <asp:Label ID="lblName" runat="server"></asp:Label>
+    </td>
+<td>
+    <asp:Label ID="Label11" runat="server" Text="訓練日期："></asp:Label>
+    <asp:Label ID="lblDate" runat="server"></asp:Label>
+    </td>
+<td>
+    <asp:Label ID="Label12" runat="server" Text="人數："></asp:Label>
+    <asp:Label ID="lblMemberCount" runat="server"></asp:Label>
+    </td>
+</tr>
+</table>
+
+</asp:Panel>
+</div>
+<div>
+<table>
+<tr><td>
+        <asp:Label ID="Label29" runat="server" Text="部門："></asp:Label>
+        </td><td>
+        <telerik:RadComboBox ID="ddlUnit" Runat="server" AutoPostBack="true"
+            onselectedindexchanged="ddlUnit_SelectedIndexChanged">
+        </telerik:RadComboBox>
+        </td></tr>
+</table>
+</div>
+<div>
+        <telerik:RadScheduler ID="rsList" runat="server" Culture="zh-TW" 
+            EnableRecurrenceSupport="False" onappointmentdelete="rsList_AppointmentDelete" 
+            onappointmentinsert="rsList_AppointmentInsert" 
+            onappointmentupdate="rsList_AppointmentUpdate" SelectedView="MonthView" 
+                    onformcreating="rsList_FormCreating" 
+            StartEditingInAdvancedForm="False" 
+            onappointmentdatabound="rsList_AppointmentDataBound" 
+            onnavigationcommand="rsList_NavigationCommand" 
+            onnavigationcomplete="rsList_NavigationComplete" OverflowBehavior="Expand" 
+            Height="" RowHeight="">
+            <AdvancedForm DateFormat="yyyy/MM/dd" TimeFormat="HH:mm" Modal="True" />
+            <Localization AdvancedAllDayEvent="全天" AdvancedCalendarCancel="取消" 
+                AdvancedCalendarOK="確定" AdvancedCalendarToday="今天" AdvancedClose="" 
+                AdvancedDaily="每日" AdvancedDay="日" AdvancedDays="日" AdvancedDescription="內容" 
+                AdvancedDone="完成" AdvancedEditAppointment="編輯行事曆" AdvancedFrom="開始時間" 
+                AdvancedNewAppointment="新增行事曆" AdvancedTo="結束時間" 
+                ContextMenuAddAppointment="新增行事曆" ContextMenuDelete="刪除" 
+                ContextMenuEdit="編輯" AdvancedSubject="主旨" Cancel="取消" ConfirmCancel="取消" 
+                ConfirmDeleteText="確定刪除本項行程?" ConfirmDeleteTitle="確定刪除" HeaderToday="今天" 
+                Save="儲存" ShowAdvancedForm="細項設定" />
+            <TimelineView UserSelectable="False" />
+            <WeekView UserSelectable="False" />
+            <DayView UserSelectable="False" />
+            <MonthView VisibleAppointmentsPerDay="500" />
+            <AppointmentTemplate>
+                <div><%# Convert.ToDateTime(Eval("Start")).ToString("HH:mm") %>~<%# Convert.ToDateTime(Eval("End")).ToString("HH:mm") %>&nbsp;<br /><%# Eval("Subject")%></div>
+            </AppointmentTemplate>
+        </telerik:RadScheduler>
+</div>
+
+
+
+    <asp:BulletedList ID="BulletedList1" runat="server" Width="200px">
+    </asp:BulletedList>
+
+
+
+    <br />
+                <telerik:RadDock runat="server" ID="RadDock1" Width="680px" 
+        Height="500px" Closed="true"
+                    Style="z-index: 3001;" Title="編輯行程" >
+                    <Commands>
+                        <telerik:DockCloseCommand></telerik:DockCloseCommand>
+                    </Commands>
+                    <ContentTemplate>
+                        <div class="editForm">
+<telerik:RadTabStrip ID="RadTabStrip1" runat="server" MultiPageID="RadMultiPage1" 
+            SelectedIndex="0" Skin="WebBlue">
+        <Tabs>
+            <telerik:RadTab runat="server" PageViewID="RadPageView1" 
+                Text="活動內容" Selected="True">
+            </telerik:RadTab>
+            <telerik:RadTab runat="server" PageViewID="RadPageView2" Text="活動對象">
+            </telerik:RadTab>
+        </Tabs>
+    </telerik:RadTabStrip>
+<telerik:RadMultiPage ID="RadMultiPage1" Runat="server" BorderColor="Black" 
+            BorderStyle="Solid" BorderWidth="1px" SelectedIndex="0" Width="98%">
+        <telerik:RadPageView ID="RadPageView1" runat="server" Selected="True">
+
+
+
+                            <div class="content">
+                            <asp:UpdatePanel runat="server" ID="upActivityCode">
+                            <ContentTemplate>
+                            <asp:Panel ID="panTopicControl" runat="server">
+                                <asp:RadioButton ID="rbSelectTopic" runat="server" AutoPostBack="True" 
+                                    Checked="True" GroupName="Topic" oncheckedchanged="rbSelect_CheckedChanged" 
+                                    Text="選擇活動類型" />
+                                <asp:RadioButton ID="rbAddTopic" runat="server" AutoPostBack="True" 
+                                    GroupName="Topic" oncheckedchanged="rbSelect_CheckedChanged" 
+                                    Text="新增活動類型" />
+                                <asp:Label ID="lbActID" runat="server" Visible="False"></asp:Label>
+                            </asp:Panel>
+                            <asp:Panel ID="panSelectTopic" runat="server">
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right">
+                                <asp:Label ID="Label25" runat="server" Text="主題名稱："></asp:Label>
+								</td>
+                                <td width="88%">
+                                <telerik:RadComboBox ID="ddlTopic" Runat="server" Filter="Contains" Width="300px">
+                                </telerik:RadComboBox>
+								</td>
+                                </tr>
+                                </table>
+                            </asp:Panel>
+                            <asp:Panel ID="panAddTopic" runat="server" Visible="False">
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right">
+                                <asp:Label ID="Label13" runat="server" Text="主題代碼："></asp:Label>
+								</td>
+                                <td width="88%">
+                                <asp:TextBox ID="tbActivityCode" runat="server" Width="116px"></asp:TextBox>
+								</td>
+                                </tr>
+                                </table>
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right">
+<asp:Label ID="Label14" runat="server" Text="主題名稱："></asp:Label>
+								</td>
+                                <td width="88%">
+<asp:TextBox ID="tbName" runat="server" Width="229px"></asp:TextBox>
+								</td>
+                                </tr>
+                                </table>
+</asp:Panel>
+
+</ContentTemplate>
+                            </asp:UpdatePanel>
+                                <br />
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right">
+                                    <asp:Label ID="Label28" runat="server" Text="活動名稱："></asp:Label>
+                                    </td>
+                                <td width="88%">
+                                    <asp:TextBox ID="tbActName" runat="server" Width="229px"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                </table>
+                                <br />
+                                <asp:UpdatePanel ID="uptime" runat="server">
+                                <ContentTemplate>
+                                
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right">
+<asp:Label ID="Label15" runat="server" Text="活動時間："></asp:Label>
+								</td>
+                                <td width="88%">
+                                <telerik:RadDatePicker ID="rdpDateBegin" Runat="server" Width="130px" 
+                                        onselecteddatechanged="rdpDateBegin_SelectedDateChanged" 
+                                        AutoPostBack="True">
+                                    <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False">
+                                    </Calendar>
+                                    <DateInput AutoPostBack="True" DateFormat="yyyy/M/d" 
+                                        DisplayDateFormat="yyyy/M/d" LabelWidth="40%">
+                                        <EmptyMessageStyle Resize="None" />
+                                        <ReadOnlyStyle Resize="None" />
+                                        <FocusedStyle Resize="None" />
+                                        <DisabledStyle Resize="None" />
+                                        <InvalidStyle Resize="None" />
+                                        <HoveredStyle Resize="None" />
+                                        <EnabledStyle Resize="None" />
+                                    </DateInput>
+                                    <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                                </telerik:RadDatePicker>
+                                <telerik:RadTimePicker ID="rtpTimeBegin" Runat="server" Width="100px" 
+                                        Culture="zh-TW">
+                                    <Calendar runat="server" UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False">
+                                    </Calendar>
+                                    <DatePopupButton CssClass="" HoverImageUrl="" ImageUrl="" Visible="False" />
+                                    <TimeView CellSpacing="-1" Culture="zh-TW" TimeFormat="HH:mm">
+                                    </TimeView>
+                                    <TimePopupButton CssClass="" HoverImageUrl="" ImageUrl="" />
+                                    <DateInput DateFormat="HH:mm" DisplayDateFormat="HH:mm" LabelWidth="64px" 
+                                        Width="">
+                                        <EmptyMessageStyle Resize="None" />
+                                        <ReadOnlyStyle Resize="None" />
+                                        <FocusedStyle Resize="None" />
+                                        <DisabledStyle Resize="None" />
+                                        <InvalidStyle Resize="None" />
+                                        <HoveredStyle Resize="None" />
+                                        <EnabledStyle Resize="None" />
+                                    </DateInput>
+                                </telerik:RadTimePicker>
+                                ~<telerik:RadDatePicker ID="rdpDateEnd" Runat="server" Width="130px">
+                                </telerik:RadDatePicker>
+                                <telerik:RadTimePicker ID="rtpTimeEnd" Runat="server" Width="100px" Culture="zh-TW">
+                                    <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False">
+                                    </Calendar>
+                                    <DatePopupButton CssClass="" HoverImageUrl="" ImageUrl="" Visible="False" />
+                                    <TimeView CellSpacing="-1" Culture="zh-TW" TimeFormat="HH:mm">
+                                    </TimeView>
+                                    <TimePopupButton CssClass="" HoverImageUrl="" ImageUrl="" />
+                                    <DateInput DateFormat="HH:mm" DisplayDateFormat="HH:mm" LabelWidth="64px" 
+                                        Width="">
+                                        <EmptyMessageStyle Resize="None" />
+                                        <ReadOnlyStyle Resize="None" />
+                                        <FocusedStyle Resize="None" />
+                                        <DisabledStyle Resize="None" />
+                                        <InvalidStyle Resize="None" />
+                                        <HoveredStyle Resize="None" />
+                                        <EnabledStyle Resize="None" />
+                                    </DateInput>
+                                </telerik:RadTimePicker>
+								</td>
+                                </tr>
+                                </table>
+</ContentTemplate>
+                                </asp:UpdatePanel>
+                                <br />
+                                <asp:Panel ID="panRange" runat="server">
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right">
+								<asp:Label ID="Label18" runat="server" Text="定期性："></asp:Label>
+								</td>
+                                <td width="88%">
+								<asp:RadioButton ID="rbNone" runat="server" Checked="True" Text="不重複" 
+                                        GroupName="rbCycle" />
+								    <br />
+                                    <asp:RadioButton ID="rbDay" runat="server" Text="每天" GroupName="rbCycle" />
+                                    <br />
+                                    <asp:RadioButton ID="rbMonth" runat="server" Text="每月" GroupName="rbCycle" />
+                                    <telerik:RadNumericTextBox ID="rntbDay" Runat="server" Culture="zh-TW" 
+                                        DbValueFactor="1" LabelWidth="64px" MaxValue="31" MinValue="1" Value="1" 
+                                        Width="30px">
+                                        <NumberFormat DecimalDigits="0" ZeroPattern="n" />
+                                    </telerik:RadNumericTextBox>
+                                    <asp:Label ID="Label20" runat="server" Text="日"></asp:Label>
+                                    <br />
+                                    <asp:RadioButton ID="rbWeek" runat="server" Text="每個星期的" GroupName="rbCycle" />
+                                    <br />
+                                    &nbsp;&nbsp;&nbsp;
+                                    <asp:CheckBox ID="cb7" runat="server" Text="日" />
+                                    <asp:CheckBox ID="cb1" runat="server" Text="一" />
+                                    <asp:CheckBox ID="cb2" runat="server" Text="二" />
+                                    <asp:CheckBox ID="cb3" runat="server" Text="三" />
+                                    <asp:CheckBox ID="cb4" runat="server" Text="四" />
+                                    <asp:CheckBox ID="cb5" runat="server" Text="五" />
+                                    <asp:CheckBox ID="cb6" runat="server" Text="六" />
+                                    <br />
+                                    <asp:RadioButton ID="rbSpecDay" runat="server" Text="每個月的第" 
+                                        GroupName="rbCycle" />
+                                    <asp:DropDownList ID="ddlweek" runat="server">
+                                        <asp:ListItem Selected="True">1</asp:ListItem>
+                                        <asp:ListItem>2</asp:ListItem>
+                                        <asp:ListItem>3</asp:ListItem>
+                                        <asp:ListItem>4</asp:ListItem>
+                                        <asp:ListItem>5</asp:ListItem>
+                                        <asp:ListItem>6</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:Label ID="Label19" runat="server" Text="週的星期"></asp:Label>
+                                    <asp:DropDownList ID="ddlspecweekday" runat="server">
+                                        <asp:ListItem Selected="True" Value="0">日</asp:ListItem>
+                                        <asp:ListItem Value="1">一</asp:ListItem>
+                                        <asp:ListItem Value="2">二</asp:ListItem>
+                                        <asp:ListItem Value="3">三</asp:ListItem>
+                                        <asp:ListItem Value="4">四</asp:ListItem>
+                                        <asp:ListItem Value="5">五</asp:ListItem>
+                                        <asp:ListItem Value="6">六</asp:ListItem>
+                                    </asp:DropDownList>
+								</td>
+                                </tr>
+                                    <tr>
+                                        <td align="right" width="12%">
+                                            &nbsp;</td>
+                                        <td width="88%">
+                                            &nbsp;</td>
+                                    </tr>
+                                </table>
+                                </asp:Panel>
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right">
+                                <asp:Label ID="Label1" runat="server" Text="活動地點："></asp:Label>
+								</td>
+                                <td width="88%">
+                                    <asp:TextBox ID="tbLocation" runat="server" Width="411px"></asp:TextBox>
+								</td>
+                                </tr>
+                                </table>
+                                <br />
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right" valign="top">
+                                <asp:Label ID="Label16" runat="server" Text="活動類型："></asp:Label>
+								</td>
+                                <td width="88%">
+                                    <asp:RadioButton ID="rbSelectType" runat="server" Checked="True" 
+                                        GroupName="ActType" Text="選擇活動類型" />
+                                <telerik:RadComboBox ID="ddlActivityType" Runat="server" AllowCustomText="True" 
+                                    MarkFirstMatch="True" Width="255px">
+                                </telerik:RadComboBox>
+                                <br />
+								    <asp:RadioButton ID="rbOtherType" runat="server" GroupName="ActType" 
+                                        Text="其他" />
+                                    <asp:TextBox ID="tbActType" runat="server" Width="170px"></asp:TextBox>
+								</td>
+                                </tr>
+                                </table>
+                                <br />
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right">
+                                <asp:Label ID="Label17" runat="server" Text="說明："></asp:Label>
+								</td>
+                                <td width="88%">
+                                <asp:TextBox ID="tbDes" runat="server" Width="541px"></asp:TextBox>
+								</td>
+                                </tr>
+                                </table>
+                                <br />
+                                <table width="100%">
+                                <tr>
+                                <td width="12%" align="right" valign="top">
+                                <asp:Label ID="Label2" runat="server" Text="附件："></asp:Label>
+								</td>
+                                <td width="88%" valign="top">
+                                <div><telerik:RadAsyncUpload ID="ruploadAttachment" runat="server">
+                                        <Localization Cancel="取消" DropZone="請將檔案拖曳至此" Remove="移除" Select="瀏覽" />
+                                    </telerik:RadAsyncUpload>
+&nbsp;<asp:Button ID="btnUpload" runat="server" Text="新增附件" onclick="btnUpload_Click" />
+                                </div>
+                                <div>
+                                
+                                    <telerik:RadGrid ID="rgAttachment" runat="server" AutoGenerateColumns="False" 
+                                        CellSpacing="0" Culture="zh-TW" GridLines="None" 
+                                        AutoGenerateDeleteColumn="True" DataSourceID="odsAttachment" 
+                                        ondeletecommand="rgAttachment_DeleteCommand" 
+                                        onitemdatabound="rgAttachment_ItemDataBound">
+                                        <ClientSettings>
+                                            <Selecting AllowRowSelect="True" />
+                                        </ClientSettings>
+                                        <MasterTableView DataKeyNames="ActAttachmentID" DataSourceID="odsAttachment" 
+                                            NoMasterRecordsText="沒有附件">
+                                            <CommandItemSettings ExportToPdfText="Export to PDF" />
+                                            <RowIndicatorColumn FilterControlAltText="Filter RowIndicator column" 
+                                                Visible="False">
+                                            </RowIndicatorColumn>
+                                            <ExpandCollapseColumn FilterControlAltText="Filter ExpandColumn column" 
+                                                Visible="True" Created="True">
+                                            </ExpandCollapseColumn>
+                                            <Columns>
+                                                <telerik:GridAttachmentColumn AttachmentDataField="Attachment" 
+                                                    AttachmentKeyFields="ActAttachmentID" DataSourceID="odsAttachment" 
+                                                    DataTextField="Name" FileNameTextField="Name" 
+                                                    FilterControlAltText="Filter attachment column" HeaderText="附件" 
+                                                    MaxFileSize="65535" UniqueName="attachment" FileName="Name">
+                                                </telerik:GridAttachmentColumn>
+                                            </Columns>
+                                            <EditFormSettings>
+                                                <EditColumn FilterControlAltText="Filter EditCommandColumn column">
+                                                </EditColumn>
+                                            </EditFormSettings>
+                                        </MasterTableView>
+                                        <FilterMenu EnableImageSprites="False">
+                                        </FilterMenu>
+                                    </telerik:RadGrid>
+                                
+                                </div>
+								</td>
+                                </tr>
+                                </table>
+
+                            </div>
+</telerik:RadPageView>
+        <telerik:RadPageView ID="RadPageView2" runat="server" Selected="false">
+        <asp:UpdatePanel runat="server" ID="UpdatePanel1">
+        <ContentTemplate>
+        
+
+
+        <div style="vertical-align:top">
+            <asp:Panel ID="Panel1" runat="server" GroupingText="對象類型">
+                <asp:RadioButtonList ID="rblTargetType" runat="server" 
+                    RepeatDirection="Horizontal" AutoPostBack="True" 
+                    onselectedindexchanged="RadioButtonList1_SelectedIndexChanged" 
+                    DataSourceID="dsTargetType" DataTextField="name" DataValueField="code">
+                </asp:RadioButtonList>
+                <div id="divTeam" runat="server" style="display:none">
+                <asp:Panel ID="palTeam" runat="server">
+                    <asp:Label ID="Label3" runat="server" Text="組別："></asp:Label>
+                    <uc1:TreeViewComboBox Width="350px" ID="TreeViewComboBox1" runat="server" Enabled="True" 
+        TreeDataFieldID="EduTeamCode" TreeDataFieldParentID="parentEduTeamCode" 
+        TreeDataSourceID="dsTermCode" TreeDataTextField="EduTeamName" 
+        AutoPostBack="False" AllowSelectParent="False" />
+                    
+                </asp:Panel>
+                </div>
+                <asp:Panel ID="palDept" runat="server" Visible="False">
+                    <asp:Label ID="Label21" runat="server" Text="部門別："></asp:Label>
+                    <telerik:RadComboBox ID="ddlDepartment" Runat="server" Filter="Contains" 
+                        ViewStateMode="Enabled">
+                    </telerik:RadComboBox>
+                </asp:Panel>
+                <asp:Panel ID="palJobCode" runat="server" Visible="False">
+                    <asp:Label ID="Label22" runat="server" Text="職稱："></asp:Label>
+                    <telerik:RadComboBox ID="ddlJobCode" Runat="server" Filter="Contains" 
+                        Width="400px" ViewStateMode="Enabled">
+                    </telerik:RadComboBox>
+                </asp:Panel>
+                <asp:Panel ID="palEduTerm" runat="server" Visible="False">
+    <asp:Panel ID="Panel2" runat="server">
+        <asp:Label ID="Label4" runat="server" Text="課程代碼："></asp:Label>
+        <asp:TextBox ID="tbEduStopCode" runat="server"></asp:TextBox>
+        <asp:Label ID="Label8" runat="server" Text="名稱："></asp:Label>
+        <asp:TextBox ID="tbEduName" runat="server"></asp:TextBox>
+        <asp:Button ID="btnQuery" runat="server" onclick="btnQuery_Click" Text="查詢" />
+        <br />
+    </asp:Panel>
+    <br />
+    <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="False" CellSpacing="0" 
+    Culture="zh-TW" GridLines="None" 
+        ondeletecommand="RadGrid1_DeleteCommand" 
+        AllowPaging="True" 
+        style="margin-top: 0px" 
+        AutoGenerateHierarchy="True" onprerender="RadGrid1_PreRender" 
+        onneeddatasource="RadGrid1_NeedDataSource1">
+        <ClientSettings>
+            <Selecting AllowRowSelect="True" />
+<Selecting AllowRowSelect="True"></Selecting>
+        </ClientSettings>
+<MasterTableView commanditemdisplay="Top" nomasterrecordstext="目前沒有資料" NoDetailRecordsText="" EditMode="PopUp" 
+            DataKeyNames="RoundCode,EduStopCode,EduTermID" ClientDataKeyNames="RoundCode,EduStopCode,EduTermID"
+            HierarchyLoadMode="Client"  GroupLoadMode="Client">
+<CommandItemSettings ExportToPdfText="Export to PDF" addnewrecordtext="新增" 
+        showrefreshbutton="False"></CommandItemSettings>
+
+<RowIndicatorColumn Visible="True" FilterControlAltText="Filter RowIndicator column">
+<HeaderStyle Width="20px"></HeaderStyle>
+</RowIndicatorColumn>
+
+<ExpandCollapseColumn Visible="True" FilterControlAltText="Filter ExpandColumn column">
+<HeaderStyle Width="20px"></HeaderStyle>
+</ExpandCollapseColumn>
+
+    <Columns>
+        <telerik:GridClientSelectColumn FilterControlAltText="Filter column column" 
+            UniqueName="column">
+        </telerik:GridClientSelectColumn>
+        <telerik:GridBoundColumn DataField="EduStopCode" 
+            FilterControlAltText="Filter EduStopCode column" HeaderText="課程代碼" 
+            UniqueName="EduStopCode">
+        </telerik:GridBoundColumn>
+        <telerik:GridBoundColumn DataField="Name" 
+            FilterControlAltText="Filter Name column" HeaderText="名稱" UniqueName="Name">
+        </telerik:GridBoundColumn>
+        <telerik:GridBoundColumn DataField="DateFromToStr" 
+            FilterControlAltText="Filter EduTeamCode column" HeaderText="訓練起訖日期" 
+            UniqueName="DateFromToStr" ReadOnly="True">
+        </telerik:GridBoundColumn>
+        <telerik:GridDateTimeColumn DataField="DateFrom" 
+            FilterControlAltText="Filter DateFrom column" HeaderText="訓練開始日期" 
+            UniqueName="DateFrom" Visible="False">
+        </telerik:GridDateTimeColumn>
+        <telerik:GridDateTimeColumn DataField="DateTo" 
+            FilterControlAltText="Filter DateTo column" HeaderText="訓練結束日期" UniqueName="DateTo" 
+            Visible="False">
+        </telerik:GridDateTimeColumn>
+        <telerik:GridBoundColumn DataField="UnitStr" 
+            FilterControlAltText="Filter UnitStr column" HeaderText="單位" 
+            UniqueName="UnitStr">
+        </telerik:GridBoundColumn>
+        <telerik:GridNumericColumn DataField="Capacity" DecimalDigits="2" 
+            FilterControlAltText="Filter Capacity column" HeaderText="訓練人數" 
+            UniqueName="Capacity">
+        </telerik:GridNumericColumn>
+<telerik:GridBoundColumn DataField="Status" HeaderText="狀態" UniqueName="Status" 
+            FilterControlAltText="Filter Status column"></telerik:GridBoundColumn>
+        <telerik:GridBoundColumn DataField="Des" 
+            FilterControlAltText="Filter Des column" HeaderText="備註" UniqueName="Des">
+        </telerik:GridBoundColumn>
+
+    </Columns>
+
+<CommandItemTemplate>
+
+</CommandItemTemplate>        
+<EditFormSettings>
+<EditColumn FilterControlAltText="Filter EditCommandColumn column" canceltext="取消" 
+        edittext="儲存" inserttext="儲存" updatetext="儲存"></EditColumn>
+    <PopUpSettings Modal="True" ScrollBars="Auto" Width="600px" />
+
+<PopUpSettings ScrollBars="Auto" Modal="True" Width="600px"></PopUpSettings>
+</EditFormSettings>
+</MasterTableView>
+
+        <PagerStyle FirstPageToolTip="第一頁" LastPageToolTip="最末頁" NextPageToolTip="下一頁" 
+            PagerTextFormat="跳至第: {4} &amp;nbsp;頁 &lt;strong&gt;{0}&lt;/strong&gt; / &lt;strong&gt;{1}&lt;/strong&gt;, 項目 &lt;strong&gt;{2}&lt;/strong&gt; - &lt;strong&gt;{3}&lt;/strong&gt; / &lt;strong&gt;{5}&lt;/strong&gt;." 
+            PageSizeLabelText="每頁筆數:" PrevPagesToolTip="上一頁" PrevPageToolTip="上一頁" />
+
+<FilterMenu EnableImageSprites="False"></FilterMenu>
+</telerik:RadGrid>
+
+
+                </asp:Panel>
+                <asp:Panel ID="palEmp" Visible="true" runat="server">
+                    <asp:Label ID="Label23" runat="server" Text="職編："></asp:Label>
+                    <asp:TextBox ID="tbEmpCode" runat="server"></asp:TextBox>
+                    <br />
+                <asp:Label ID="Label24" runat="server" Text="角色："></asp:Label>
+                <telerik:RadComboBox ID="rcbRole" Runat="server" DataSourceID="dsRoleType" 
+                    DataTextField="name" DataValueField="code" AutoPostBack="True" 
+                        onselectedindexchanged="rcbRole_SelectedIndexChanged">
+                </telerik:RadComboBox>
+                <asp:Panel ID="palTimeRange" Visible = "false" runat="server">
+                    <asp:Label ID="Label26" runat="server" Text="時段："></asp:Label>
+                    <telerik:RadTimePicker ID="rdtpTimeBegin" Runat="server" Culture="zh-TW">
+                        <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False">
+                        </Calendar>
+                        <DatePopupButton CssClass="" HoverImageUrl="" ImageUrl="" Visible="False" />
+                        <TimeView CellSpacing="-1" TimeFormat="HH:mm" Interval="00:30:00">
+                        </TimeView>
+                        <TimePopupButton CssClass="" HoverImageUrl="" ImageUrl="" />
+                        <DateInput DateFormat="HH:mm" DisplayDateFormat="HH:mm" LabelWidth="64px" 
+                            Width="">
+                            <EmptyMessageStyle Resize="None" />
+                            <ReadOnlyStyle Resize="None" />
+                            <FocusedStyle Resize="None" />
+                            <DisabledStyle Resize="None" />
+                            <InvalidStyle Resize="None" />
+                            <HoveredStyle Resize="None" />
+                            <EnabledStyle Resize="None" />
+                        </DateInput>
+                    </telerik:RadTimePicker>
+                    <asp:Label ID="Label27" runat="server" Text="~"></asp:Label>
+                    <telerik:RadTimePicker ID="rdtpTimeEnd" Runat="server" Culture="zh-TW">
+                        <Calendar UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False">
+                        </Calendar>
+                        <DatePopupButton CssClass="" HoverImageUrl="" ImageUrl="" Visible="False" />
+                        <TimeView CellSpacing="-1" TimeFormat="HH:mm" Interval="00:30:00">
+                        </TimeView>
+                        <TimePopupButton CssClass="" HoverImageUrl="" ImageUrl="" />
+                        <DateInput DateFormat="HH:mm" DisplayDateFormat="HH:mm" LabelWidth="64px" 
+                            Width="">
+                            <EmptyMessageStyle Resize="None" />
+                            <ReadOnlyStyle Resize="None" />
+                            <FocusedStyle Resize="None" />
+                            <DisabledStyle Resize="None" />
+                            <InvalidStyle Resize="None" />
+                            <HoveredStyle Resize="None" />
+                            <EnabledStyle Resize="None" />
+                        </DateInput>
+                    </telerik:RadTimePicker>
+                    </asp:Panel>
+
+                </asp:Panel>
+
+            </asp:Panel>
+        </div>
+        <div>
+
+            <asp:Button ID="btnAddTarget" runat="server" Text="新增" 
+                onclick="btnAddTarget_Click" />
+
+            <asp:Panel ID="Panel3" runat="server">
+<telerik:RadGrid ID="rgTarget" runat="server" AutoGenerateColumns="False" CellSpacing="0" 
+    Culture="zh-TW" GridLines="None" AllowMultiRowSelection="True" 
+        AllowPaging="True" 
+        style="margin-top: 0px" onitemcommand="rgTarget_ItemCommand" 
+                    onneeddatasource="rgTarget_NeedDataSource">
+        <ClientSettings>
+            <Selecting AllowRowSelect="True" />
+        </ClientSettings>
+<MasterTableView commanditemdisplay="Top" nomasterrecordstext="目前沒有資料" EditMode="PopUp">
+<CommandItemSettings ExportToPdfText="Export to PDF" addnewrecordtext="新增" 
+        showrefreshbutton="False"></CommandItemSettings>
+
+<RowIndicatorColumn Visible="True" FilterControlAltText="Filter RowIndicator column">
+<HeaderStyle Width="20px"></HeaderStyle>
+</RowIndicatorColumn>
+
+<ExpandCollapseColumn Visible="True" FilterControlAltText="Filter ExpandColumn column">
+<HeaderStyle Width="20px"></HeaderStyle>
+</ExpandCollapseColumn>
+
+    <Columns>
+        <telerik:GridClientSelectColumn FilterControlAltText="Filter column column" 
+            UniqueName="column">
+        </telerik:GridClientSelectColumn>
+        <telerik:GridBoundColumn DataField="TargetTypeName" 
+            FilterControlAltText="Filter TargetTypeName column" 
+            UniqueName="TargetTypeName" HeaderText="類別">
+        </telerik:GridBoundColumn>
+        <telerik:GridBoundColumn FilterControlAltText="Filter TargetName column" 
+            HeaderText="對象" UniqueName="TargetName" DataField="TargetName">
+        </telerik:GridBoundColumn>
+        <telerik:GridBoundColumn DataField="roleName" 
+            FilterControlAltText="Filter roleName column" HeaderText="角色" 
+            UniqueName="roleName">
+        </telerik:GridBoundColumn>
+        <telerik:GridBoundColumn DataField="TimeRangeStr" 
+            FilterControlAltText="Filter TimeRangeStr column" HeaderText="時段" 
+            UniqueName="TimeRangeStr">
+        </telerik:GridBoundColumn>
+    </Columns>
+
+<CommandItemTemplate>
+    <asp:LinkButton ID="lbtnDelete" OnClientClick="javascript:return confirm('是否確定刪除所有選擇的項目?')"
+        runat="server" CommandName="DeleteSelected"><img style="border:0px" alt="" src="Images/delete.gif" /> 刪除</asp:LinkButton>
+</CommandItemTemplate>        
+<EditFormSettings EditFormType="AutoGenerated">
+<EditColumn FilterControlAltText="Filter EditCommandColumn column" canceltext="取消" 
+        edittext="儲存" inserttext="儲存" updatetext="儲存"></EditColumn>
+    <PopUpSettings Modal="True" ScrollBars="Auto" Width="600px" />
+</EditFormSettings>
+</MasterTableView>
+
+        <PagerStyle FirstPageToolTip="第一頁" LastPageToolTip="最末頁" NextPageToolTip="下一頁" 
+            PagerTextFormat="跳至第: {4} &amp;nbsp;頁 &lt;strong&gt;{0}&lt;/strong&gt; / &lt;strong&gt;{1}&lt;/strong&gt;, 項目 &lt;strong&gt;{2}&lt;/strong&gt; - &lt;strong&gt;{3}&lt;/strong&gt; / &lt;strong&gt;{5}&lt;/strong&gt;." 
+            PageSizeLabelText="每頁筆數:" PrevPagesToolTip="上一頁" PrevPageToolTip="上一頁" />
+
+<FilterMenu EnableImageSprites="False"></FilterMenu>
+</telerik:RadGrid>
+            </asp:Panel>
+        </div>
+
+        </ContentTemplate>
+        </asp:UpdatePanel>
+
+</telerik:RadPageView>
+</telerik:RadMultiPage>
+<asp:Panel ID="panControl" runat="server">
+                            <div class="footer">
+                                <asp:Button runat="server" ID="SubmitButton" Text="儲存" 
+                                    onclick="btnSubmit_Click" ForeColor="Black" >
+                                </asp:Button>
+                                &nbsp; &nbsp;<asp:Button ID="btnSaveAs" runat="server" ForeColor="Black" 
+                                    onclick="btnSubmit_Click" Text="另存活動" />
+                                &nbsp; &nbsp;
+                                <button onclick="hideForm();" type="button" style="margin-right: 20px;">
+                                    取消</button>
+                            </div>
+</asp:Panel>
+                        </div>
+
+                    </ContentTemplate>
+                </telerik:RadDock>
+    
+
+    <asp:ObjectDataSource ID="dsTargetType" runat="server" SelectMethod="GetCodeRefsStatic" 
+        TypeName="KMU.EduActivity.ApplicationLayer.Services.EduActivityAppService" 
+        DataObjectTypeName="KMU.EduActivity.ApplicationLayer.DTO.V_CodeRefDto">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="EduAct_ActTargetType" Name="codetype" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    
+    <asp:ObjectDataSource ID="dsRoleType" runat="server" SelectMethod="GetCodeRefsStatic" 
+        TypeName="KMU.EduActivity.ApplicationLayer.Services.EduActivityAppService" 
+        DataObjectTypeName="KMU.EduActivity.ApplicationLayer.DTO.V_CodeRefDto">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="EduAct_ActRoleType" Name="codetype" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    
+    <asp:ObjectDataSource ID="odsAttachment" runat="server" 
+        DataObjectTypeName="KMU.EduActivity.ApplicationLayer.DTO.EduStopActAttachmentDto" 
+        SelectMethod="GetActAttachments" 
+        TypeName="KMU.EduActivity.ApplicationLayer.Services.EduActivityAppService" 
+        onselecting="odsAttachment_Selecting">
+    </asp:ObjectDataSource>
+    
+    <asp:ObjectDataSource ID="dsTermCode" runat="server" SelectMethod="GetEduTeams" 
+        TypeName="KMU.EduActivity.ApplicationLayer.DTO.EduTeamDto">
+    </asp:ObjectDataSource>
+    
+    </asp:Content>
+

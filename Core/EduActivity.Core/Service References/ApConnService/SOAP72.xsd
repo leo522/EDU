@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://KMUGService/PasswordReset" elementFormDefault="qualified" targetNamespace="http://KMUGService/PasswordReset" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://intraweb.server.kmuh.org.tw/WEB/KMUGService/WCFServiceV2/FuncIndex/SOAP.svc?xsd=xsd6" namespace="http://KMUGService/PasswordChange" />
+  <xs:complexType name="PasswordResetReturnCollect">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://KMUGService/PasswordChange" base="q1:PasswordChangeReturnCollect">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EmailTo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExpireDateTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PasswordResetReturnCollect" nillable="true" type="tns:PasswordResetReturnCollect" />
+</xs:schema>
